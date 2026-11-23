@@ -1,0 +1,3532 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janissary HQ — Ottoman Knowledge Empire War Room</title>
+  <!-- Google Fonts: Cinzel for Imperial Headings, Inter for UI, JetBrains Mono for Chronometers -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0a0b0e',
+            charcoal: '#12141a',
+            slatewar: '#191c24',
+            imperialGold: '#d4af37',
+            imperialAmber: '#f59e0b',
+            conqueredEmerald: '#10b981',
+            lockedCrimson: '#ef4444',
+          },
+          fontFamily: {
+            imperial: ['Cinzel', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Custom Ottoman Geometric & War Room Styling */
+    body {
+      background-color: #0a0b0e;
+      color: #e5e7eb;
+      font-family: 'Inter', sans-serif;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 45%),
+        linear-gradient(to bottom, rgba(18, 20, 26, 0.92), rgba(10, 11, 14, 0.98));
+      min-height: 100vh;
+    }
+
+    .ottoman-border {
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(212, 175, 55, 0.14);
+    }
+
+    .ottoman-border-strong {
+      border: 1.5px solid rgba(212, 175, 55, 0.55);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75), inset 0 0 18px rgba(212, 175, 55, 0.08);
+    }
+
+    .ottoman-pattern-bg {
+      background-image: repeating-linear-gradient(45deg,
+          rgba(212, 175, 55, 0.03) 0px,
+          rgba(212, 175, 55, 0.03) 2px,
+          transparent 2px,
+          transparent 12px);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #f7df8b 0%, #d4af37 50%, #b48a1e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Soldier Unit Animations */
+    @keyframes soldierPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.65);
+      }
+
+      50% {
+        transform: scale(1.12);
+        box-shadow: 0 0 10px 3px rgba(245, 158, 11, 0.35);
+      }
+    }
+
+    .soldier-marching {
+      animation: soldierPulse 1.4s infinite ease-in-out;
+    }
+
+    @keyframes alarmFlash {
+
+      0%,
+      100% {
+        border-color: #f59e0b;
+        background-color: rgba(245, 158, 11, 0.16);
+      }
+
+      50% {
+        border-color: #ef4444;
+        background-color: rgba(239, 68, 68, 0.24);
+      }
+    }
+
+    .alarm-active-banner {
+      animation: alarmFlash 1s infinite ease-in-out;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a0b0e;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #2c313d;
+      border-radius: 9999px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4af37;
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-amber-500/30 selection:text-amber-200">
+
+  <!-- TOP IMPERIAL COMMAND BAR -->
+  <header class="sticky top-0 z-40 bg-charcoal/95 backdrop-blur-md border-b border-amber-500/30 shadow-xl">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-3">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <!-- Brand & Motto -->
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500/25 to-amber-900/40 border border-amber-400/50 flex items-center justify-center shadow-inner shrink-0">
+              <!-- Ottoman Crescent & Star SVG Emblem -->
+              <svg class="w-7 h-7 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12.5 3.1c-4.9 0-8.9 4-8.9 8.9s4 8.9 8.9 8.9c2.2 0 4.2-.8 5.8-2.1-1.1.5-2.3.8-3.6.8-4.4 0-8-3.6-8-8s3.6-8 8-8c1.3 0 2.5.3 3.6.8-1.6-1.3-3.6-2.1-5.8-2.1zm5.7 5.4l-.8 2.1-2.2.1 1.7 1.4-.6 2.1 1.9-1.2 1.9 1.2-.6-2.1 1.7-1.4-2.2-.1-.8-2.1z" />
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <h1 class="font-imperial text-xl sm:text-2xl font-extrabold tracking-wider gold-gradient-text">JANISSARY
+                  HQ</h1>
+                <span
+                  class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/40">
+                  Imperial War Room
+                </span>
+              </div>
+              <p class="text-xs text-amber-200/75 font-medium tracking-wide">
+                Minute-Soldiers &bull; Ottoman Knowledge Empire &bull; <span
+                  class="text-emerald-400 font-semibold">Victory Through Knowledge!</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Mobile Clock Badge -->
+          <div class="lg:hidden text-right">
+            <div id="mobileClockDisplay" class="font-mono text-sm font-bold text-amber-300">00:00:00</div>
+            <div id="mobileActiveDivBadge" class="text-[10px] uppercase tracking-wider text-emerald-400 font-semibold">
+              War Room Ready</div>
+          </div>
+        </div>
+
+        <!-- Command Controls: Clock Override, Alarm Suite, Cloud Sync & Backup -->
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Live / Demo Clock Selector -->
+          <div class="flex items-center gap-1.5 bg-slatewar/90 border border-amber-500/30 rounded-xl px-2.5 py-1.5">
+            <span class="text-[11px] uppercase tracking-wider text-amber-400/90 font-semibold">Clock:</span>
+            <select id="clockOverrideSelect" aria-label="Clock Mode Override"
+              class="bg-obsidian text-xs text-gray-100 border border-amber-500/30 rounded-lg px-2 py-1 focus:outline-none focus:border-amber-400">
+              <option value="live">Live System Clock</option>
+              <option value="03:15">Demo 03:15 AM (Tahajjud)</option>
+              <option value="04:15">Demo 04:15 AM (Akinci Active)</option>
+              <option value="05:15">Demo 05:15 AM (Fajr 20m Prayer)</option>
+              <option value="08:05">Demo 08:05 AM (Akinci Expired / Break)</option>
+              <option value="09:30">Demo 09:30 AM (Janissary Active)</option>
+              <option value="12:20">Demo 12:20 PM (Dhuhr 20m Prayer)</option>
+              <option value="14:30">Demo 02:30 PM (Sipahi Active)</option>
+              <option value="16:20">Demo 04:20 PM (Asr 20m Prayer)</option>
+              <option value="17:50">Demo 05:50 PM (Maghrib 20m Prayer)</option>
+              <option value="20:35">Demo 08:35 PM (Isha 20m Prayer)</option>
+              <option value="21:00">Demo 09:00 PM (Azap English Active)</option>
+              <option value="21:40">Demo 09:40 PM (Azap Assembly Active)</option>
+              <option value="22:05">Demo 10:05 PM (All Divisions Expired)</option>
+            </select>
+            <span id="desktopClockDisplay"
+              class="hidden sm:inline-block font-mono text-xs font-bold text-amber-300 pl-1">00:00:00</span>
+          </div>
+
+          <!-- Alarm Controls -->
+          <div class="flex items-center gap-1.5 bg-slatewar/90 border border-amber-500/30 rounded-xl px-2 py-1.5">
+            <button id="toggleSoundBtn" type="button"
+              class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 transition">
+              Sound: ON
+            </button>
+            <button id="testAlarmBtn" type="button"
+              class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition">
+              Test Alarm
+            </button>
+            <button id="stopAlarmBtn" type="button"
+              class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-red-500/20 text-red-300 border border-red-500/40 hover:bg-red-500/30 transition">
+              Stop Alarm
+            </button>
+          </div>
+
+          <!-- Cloud Sync Status & Cross-Device Sync Trigger -->
+          <button id="openSyncModalBtn" type="button"
+            title="Click to view Cloud Sync Status, Export Backup, or Import Backup"
+            class="px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-amber-600 to-amber-500 text-obsidian hover:from-amber-500 hover:to-amber-400 shadow-md transition flex items-center gap-1.5">
+            <span id="cloudSyncDot" class="w-2 h-2 rounded-full bg-amber-950 inline-block"></span>
+            <span id="cloudSyncLabel">Cloud: Offline</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Reminder Notice & Live Alarm Alert Bar -->
+      <div
+        class="mt-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] bg-obsidian/80 border border-amber-500/20 rounded-xl px-3 py-1.5">
+        <div class="flex items-center gap-2 text-amber-200/80">
+          <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+          <span><strong>Imperial Audio Protocol:</strong> Keep this browser tab active or set a phone backup alarm when
+            locking your screen to ensure uninterrupted audio alerts.</span>
+        </div>
+        <div id="alarmStatusText" class="font-mono text-emerald-400 font-semibold shrink-0">
+          Alarm Sentinel Armed
+        </div>
+      </div>
+
+      <!-- Dynamic Active Alarm Banner (Visible when an alarm triggers) -->
+      <div id="activeAlarmBanner"
+        class="hidden mt-2.5 rounded-xl border-2 border-amber-400 p-3 alarm-active-banner flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-9 h-9 rounded-lg bg-amber-500/30 border border-amber-300 flex items-center justify-center text-amber-200 font-bold text-lg">
+            !
+          </div>
+          <div>
+            <div id="alarmBannerTitle" class="font-imperial font-bold text-sm text-amber-200 uppercase tracking-wider">
+              IMPERIAL WAR HORN ALERT</div>
+            <div id="alarmBannerMessage" class="text-xs text-white/90">Scheduled division transition triggered.</div>
+          </div>
+        </div>
+        <button id="dismissBannerAlarmBtn" type="button"
+          class="px-4 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs font-bold uppercase tracking-wider shadow">
+          Silence &amp; Acknowledge
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE CONTAINER -->
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 py-5 space-y-6">
+
+    <!-- EMPIRE STRATEGIC TELEMETRY KPI STRIP -->
+    <section aria-label="Empire Conquest Overview" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div class="bg-charcoal/90 ottoman-border rounded-2xl p-3.5">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Countries Conquered</div>
+        <div class="mt-1 flex items-baseline gap-2">
+          <span id="kpiCountriesConquered" class="font-imperial text-2xl font-extrabold text-emerald-400">0</span>
+          <span id="kpiCountriesTotal" class="text-xs text-gray-400">/ 13</span>
+        </div>
+        <div id="kpiCountryConquestSum" class="mt-1 text-[11px] text-amber-300/90 font-mono">Total Victories: 0x</div>
+      </div>
+
+      <div class="bg-charcoal/90 ottoman-border rounded-2xl p-3.5">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Fortresses Conquered</div>
+        <div class="mt-1 flex items-baseline gap-2">
+          <span id="kpiFortressesConquered" class="font-imperial text-2xl font-extrabold text-emerald-400">0</span>
+          <span id="kpiFortressesTotal" class="text-xs text-gray-400">/ 500</span>
+        </div>
+        <div id="kpiFortressConquestSum" class="mt-1 text-[11px] text-amber-300/90 font-mono">Total Victories: 0x</div>
+      </div>
+
+      <div class="bg-charcoal/90 ottoman-border rounded-2xl p-3.5">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Parts / Classes Done</div>
+        <div class="mt-1 flex items-baseline gap-2">
+          <span id="kpiPartsDone" class="font-imperial text-2xl font-extrabold text-amber-400">0</span>
+          <span id="kpiPartsTotal" class="text-xs text-gray-400">/ 1540</span>
+        </div>
+        <div class="mt-1 text-[11px] text-gray-400">Academic + English Classes</div>
+      </div>
+
+      <div class="bg-charcoal/90 ottoman-border rounded-2xl p-3.5">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Minute-Soldiers Deployed</div>
+        <div class="mt-1 flex items-baseline gap-2">
+          <span id="kpiTotalSoldiers" class="font-imperial text-2xl font-extrabold text-amber-300">0</span>
+          <span class="text-xs text-gray-400">Soldiers</span>
+        </div>
+        <div class="mt-1 text-[11px] text-emerald-400/90">1 Min Study = 1 Soldier</div>
+      </div>
+
+      <div class="bg-charcoal/90 ottoman-border rounded-2xl p-3.5">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Active Division</div>
+        <div id="kpiActiveDivision" class="mt-1 font-imperial text-base sm:text-lg font-bold text-amber-400 truncate">
+          Checking...</div>
+        <div id="kpiActiveWindow" class="mt-1 text-[11px] font-mono text-gray-400">--:-- - --:--</div>
+      </div>
+
+      <div class="bg-charcoal/90 ottoman-border rounded-2xl p-3.5">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Reinforcement Queue</div>
+        <div class="mt-1 flex items-baseline gap-2">
+          <span id="kpiReinforcements" class="font-imperial text-2xl font-extrabold text-red-400">0</span>
+          <span class="text-xs text-gray-400">Pending</span>
+        </div>
+        <div class="mt-1 text-[11px] text-gray-400">Auto-Routed Incomplete Ops</div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION TABS -->
+    <nav aria-label="War Room Views" class="flex flex-wrap gap-2 bg-charcoal/90 p-2 rounded-2xl ottoman-border">
+      <button type="button" data-tab="war-room"
+        class="nav-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition bg-amber-500 text-obsidian shadow">
+        1. Command &amp; Soldier Deployment
+      </button>
+      <button type="button" data-tab="empire-atlas"
+        class="nav-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition text-gray-300 hover:bg-slatewar">
+        2. Imperial Atlas &amp; Conquests (13 Countries)
+      </button>
+      <button type="button" data-tab="daily-routine"
+        class="nav-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition text-gray-300 hover:bg-slatewar">
+        3. Daily Routine &amp; 20-Min Prayer Windows
+      </button>
+      <button type="button" data-tab="conquest-history"
+        class="nav-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition text-gray-300 hover:bg-slatewar">
+        4. Conquest Chronicles &amp; Victory Log
+      </button>
+    </nav>
+
+    <!-- ===================================================================== -->
+    <!-- TAB 1: COMMAND & SOLDIER DEPLOYMENT (DIVISIONS, TIMER, SOLDIER GRID)  -->
+    <!-- ===================================================================== -->
+    <section id="tab-war-room" class="tab-panel space-y-6">
+
+      <!-- Auto-Reinforcement Dispatch Alert Banner (shown when incomplete tasks exist in queue) -->
+      <div id="reinforcementBanner" class="hidden bg-red-950/50 border border-red-500/50 rounded-2xl p-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span
+                class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-full bg-red-500/20 text-red-300 border border-red-500/40">
+                Auto-Reinforcement Chain Active
+              </span>
+              <h3 class="font-imperial text-sm font-bold text-red-200 uppercase">Incomplete Division Operations
+                Dispatched</h3>
+            </div>
+            <p id="reinforcementSummaryText" class="text-xs text-red-100/85 mt-1"></p>
+          </div>
+          <div class="flex items-center gap-2">
+            <select id="reinforcementSelect" aria-label="Select Reinforcement Order"
+              class="bg-obsidian text-xs text-amber-200 border border-red-500/40 rounded-xl px-3 py-2 focus:outline-none">
+            </select>
+            <button id="loadReinforcementBtn" type="button"
+              class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian text-xs font-bold uppercase tracking-wider transition shrink-0">
+              Load Into Mission
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Sequential Ottoman Divisions Status Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4" id="divisionsCardsGrid">
+        <!-- Populated dynamically by JS -->
+      </div>
+
+      <!-- Post-Expiry Work Report Panel (Appears automatically when a division is Locked / Time Expired) -->
+      <div id="postExpiryPanel" class="hidden bg-charcoal ottoman-border-strong rounded-2xl p-5 ottoman-pattern-bg">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-amber-500/25 pb-4">
+          <div>
+            <span
+              class="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-full bg-red-500/20 text-red-300 border border-red-500/40">
+              Mandatory Post-Expiry Field Report
+            </span>
+            <h3 class="font-imperial text-lg font-bold text-amber-300 mt-1">Division Window Closed — Submit Completion
+              Report</h3>
+            <p class="text-xs text-gray-300 mt-0.5">
+              Normal deployment inputs are locked for expired windows. Any uncompleted percentage automatically
+              dispatches as an Auto-Reinforcement Mission to the next division (<span
+                class="text-amber-300 font-semibold">Akinci &rarr; Janissary &rarr; Sipahi &rarr; Azap &rarr; Next Day
+                Akinci</span>).
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+          <div>
+            <label for="expiredDivisionSelect" class="block text-xs font-semibold text-amber-300 mb-1">Expired
+              Division</label>
+            <select id="expiredDivisionSelect"
+              class="w-full bg-obsidian border border-amber-500/40 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+            </select>
+          </div>
+
+          <div>
+            <label for="expiryCompletionSelect" class="block text-xs font-semibold text-amber-300 mb-1">Completion
+              Percentage</label>
+            <select id="expiryCompletionSelect"
+              class="w-full bg-obsidian border border-amber-500/40 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+              <option value="100">100% Completed (Full Victory)</option>
+              <option value="75">75% Completed (25% Reinforce Next)</option>
+              <option value="50">50% Completed (50% Reinforce Next)</option>
+              <option value="25">25% Completed (75% Reinforce Next)</option>
+              <option value="0">0% Completed / None Done (100% Reinforce Next)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="expiryLastUnitSelect" class="block text-xs font-semibold text-amber-300 mb-1">Last Completed
+              Unit / Part</label>
+            <select id="expiryLastUnitSelect"
+              class="w-full bg-obsidian border border-amber-500/40 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+              <option value="None Completed">None Completed</option>
+              <option value="Part 1 / Class 1">Part 1 / Class 1</option>
+              <option value="Part 2 / Class 2">Part 2 / Class 2</option>
+              <option value="Part 3 / Class 3 (Fortress Ready)">Part 3 / Class 3 (Fortress Ready)</option>
+              <option value="Class 4 (English Speaking)">Class 4 (English Speaking)</option>
+              <option value="Class 5 (English Fortress Ready)">Class 5 (English Fortress Ready)</option>
+            </select>
+          </div>
+
+          <div class="flex items-end">
+            <button id="submitExpiryReportBtn" type="button"
+              class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-obsidian font-bold text-xs uppercase tracking-wider shadow-lg transition">
+              File Report &amp; Route Reinforcements
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Battle Command & Minute-Soldier Arena -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <!-- Left Column: Dropdown-Driven Campaign Planner -->
+        <div class="lg:col-span-5 bg-charcoal/95 ottoman-border rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-amber-500/20 pb-3">
+            <div>
+              <h2 class="font-imperial text-lg font-bold text-amber-300">Campaign Mission Orders</h2>
+              <p class="text-xs text-gray-400">Dropdown-only tactical deployment protocol</p>
+            </div>
+            <span id="missionLockBadge"
+              class="px-2.5 py-1 text-[11px] font-bold uppercase rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+              Window Open
+            </span>
+          </div>
+
+          <div class="space-y-3">
+            <!-- Target Division -->
+            <div>
+              <label for="missionDivisionSelect" class="block text-xs font-semibold text-amber-200 mb-1">1. Command
+                Division</label>
+              <select id="missionDivisionSelect"
+                class="w-full bg-obsidian border border-amber-500/35 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+              </select>
+            </div>
+
+            <!-- Target Country -->
+            <div>
+              <label for="missionCountrySelect" class="block text-xs font-semibold text-amber-200 mb-1">2. Target
+                Country (Subject / Skill)</label>
+              <select id="missionCountrySelect"
+                class="w-full bg-obsidian border border-amber-500/35 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+              </select>
+            </div>
+
+            <!-- Year Selector (Hidden automatically for English Speaking Direct-Fortress Country) -->
+            <div id="missionYearContainer">
+              <label for="missionYearSelect" class="block text-xs font-semibold text-amber-200 mb-1">3. Campaign Year (1
+                to 5)</label>
+              <select id="missionYearSelect"
+                class="w-full bg-obsidian border border-amber-500/35 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+              </select>
+            </div>
+
+            <!-- Fortress Selector -->
+            <div>
+              <label for="missionFortressSelect" class="block text-xs font-semibold text-amber-200 mb-1">4. Target
+                Fortress &amp; Commander</label>
+              <select id="missionFortressSelect"
+                class="w-full bg-obsidian border border-amber-500/35 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+              </select>
+            </div>
+
+            <!-- Sequential Part / Class Range Selector -->
+            <div>
+              <label for="missionPartSelect" class="block text-xs font-semibold text-amber-200 mb-1">5. Part / Class
+                Objective</label>
+              <select id="missionPartSelect"
+                class="w-full bg-obsidian border border-amber-500/35 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+              </select>
+            </div>
+
+            <!-- Minute-Soldiers Battalion Size & Mehter Recovery -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="soldierMinutesSelect" class="block text-xs font-semibold text-amber-200 mb-1">6.
+                  Minute-Soldiers</label>
+                <select id="soldierMinutesSelect"
+                  class="w-full bg-obsidian border border-amber-500/35 rounded-xl px-3 py-2.5 text-xs text-amber-300 font-mono font-bold focus:outline-none focus:border-amber-400">
+                  <option value="15">15 Soldiers (15 Min)</option>
+                  <option value="20">20 Soldiers (20 Min)</option>
+                  <option value="25">25 Soldiers (25 Min)</option>
+                  <option value="30" selected>30 Soldiers (30 Min)</option>
+                  <option value="45">45 Soldiers (45 Min)</option>
+                  <option value="60">60 Soldiers (60 Min)</option>
+                  <option value="75">75 Soldiers (75 Min)</option>
+                  <option value="90">90 Soldiers (90 Min)</option>
+                  <option value="120">120 Soldiers (120 Min)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="mehterPauseSelect" class="block text-xs font-semibold text-amber-200 mb-1">7. Mehter
+                  Recovery</label>
+                <select id="mehterPauseSelect"
+                  class="w-full bg-obsidian border border-amber-500/35 rounded-xl px-3 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-amber-400">
+                  <option value="5">5 Min Mehter March</option>
+                  <option value="10" selected>10 Min Mehter March</option>
+                  <option value="15">15 Min Mehter March</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="pt-2 space-y-2">
+            <div class="grid grid-cols-2 gap-2.5">
+              <button id="startDeploymentBtn" type="button"
+                class="py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-obsidian font-extrabold text-xs uppercase tracking-wider shadow-lg transition disabled:opacity-40 disabled:cursor-not-allowed">
+                Deploy Soldiers
+              </button>
+              <button id="pauseDeploymentBtn" type="button"
+                class="py-3 px-4 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-bold text-xs uppercase tracking-wider transition disabled:opacity-40">
+                Hold / Pause
+              </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <button id="completeMissionNowBtn" type="button"
+                class="py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian font-bold text-xs uppercase tracking-wider transition disabled:opacity-40 disabled:cursor-not-allowed">
+                Complete Objective Now
+              </button>
+              <button id="startMehterBtn" type="button"
+                class="py-2.5 px-3 rounded-xl bg-slatewar hover:bg-slate-800 text-amber-200 border border-amber-500/30 font-semibold text-xs uppercase tracking-wider transition">
+                Start Mehter Pause
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Visual Minute-Soldier Grid & Chronometer -->
+        <div
+          class="lg:col-span-7 bg-charcoal/95 ottoman-border rounded-2xl p-5 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-amber-500/20 pb-3">
+              <div>
+                <h2 class="font-imperial text-lg font-bold text-amber-300">Imperial Battalion Formation</h2>
+                <p id="activeMissionSummary" class="text-xs text-gray-300 mt-0.5">Select your target fortress and deploy
+                  your minute-soldiers.</p>
+              </div>
+              <div class="text-right bg-obsidian border border-amber-500/35 rounded-xl px-4 py-2">
+                <div class="text-[10px] uppercase tracking-widest text-amber-400/80 font-semibold">Chronometer</div>
+                <div id="battalionTimerDisplay" class="font-mono text-2xl font-extrabold text-amber-300">30:00</div>
+              </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mt-3 text-[11px]">
+              <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1.5 text-gray-400">
+                  <span class="w-3 h-3 rounded bg-slatewar border border-amber-500/30 inline-block"></span> Standby
+                </span>
+                <span class="flex items-center gap-1.5 text-amber-300 font-semibold">
+                  <span class="w-3 h-3 rounded bg-amber-500 inline-block animate-pulse"></span> Marching (Current Min)
+                </span>
+                <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                  <span class="w-3 h-3 rounded bg-emerald-500 inline-block"></span> Conquered Min
+                </span>
+              </div>
+              <div id="soldierProgressFraction" class="font-mono text-xs text-amber-300 font-bold">0 / 30 Soldiers</div>
+            </div>
+
+            <!-- Soldier Icon Grid -->
+            <div id="soldierGridContainer"
+              class="mt-4 grid grid-cols-6 sm:grid-cols-10 md:grid-cols-12 gap-2 max-h-[340px] overflow-y-auto p-2 bg-obsidian/70 rounded-xl border border-amber-500/20">
+              <!-- Soldier icons rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Sultan Approval Banner when current Fortress/Year/Country is ready for Conquest Decree -->
+          <div id="readyForSultanBanner"
+            class="hidden rounded-xl bg-emerald-950/60 border border-emerald-400/60 p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider text-emerald-300">Prerequisites Fulfilled —
+                Awaiting Imperial Seal</div>
+              <div id="readyForSultanText" class="text-xs text-emerald-100 mt-0.5">All parts of this fortress are
+                complete. Request Sultan Approval to declare it Conquered!</div>
+            </div>
+            <button id="openSultanApprovalFromWarRoomBtn" type="button"
+              class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian font-extrabold text-xs uppercase tracking-wider shadow shrink-0">
+              Request Sultan Decree
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- TAB 2: IMPERIAL ATLAS & CONQUESTS (13 COUNTRIES + LIBERATION SYSTEM)  -->
+    <!-- ===================================================================== -->
+    <section id="tab-empire-atlas" class="tab-panel hidden space-y-5">
+      <!-- Atlas Header & Add Country Bar -->
+      <div
+        class="bg-charcoal/95 ottoman-border rounded-2xl p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div>
+          <h2 class="font-imperial text-xl font-bold gold-gradient-text">Imperial Atlas of Knowledge Territories</h2>
+          <p class="text-xs text-gray-300 mt-1">
+            Standard Subjects: <span class="text-amber-300 font-semibold">3 Parts = 1 Fortress &rarr; 8 Fortresses = 1
+              Year &rarr; 5 Years (40 Fortresses, 120 Parts) = 1 Country</span>.
+            Special Realm (<span class="text-emerald-300 font-semibold">English Speaking — Andalusia</span>): <span
+              class="text-amber-300 font-semibold">5 Classes = 1 Fortress &rarr; 20 Fortresses (100 Classes) =
+              Country</span>.
+          </p>
+        </div>
+
+        <!-- Add Country Preset Selector -->
+        <div class="flex flex-wrap items-center gap-2 bg-obsidian/90 p-2.5 rounded-xl border border-amber-500/30">
+          <select id="newCountryPresetSelect" aria-label="Select New Territory Preset"
+            class="bg-slatewar text-xs text-gray-100 border border-amber-500/30 rounded-lg px-3 py-2 focus:outline-none">
+            <option value="bot-206|Bot-206: Plant Physiology & Ecology|Bosnia|standard">Add Standard (5-Yr): Bot-206
+              (Bosnia)</option>
+            <option value="cm-7250|CM 7250: Analytical & Environmental Chem|Crimea|standard">Add Standard (5-Yr): CM
+              7250 (Crimea)</option>
+            <option value="zoo-2005|ZOO-2005: Genetics & Molecular Biology|Hejaz|standard">Add Standard (5-Yr): ZOO-2005
+              (Hejaz)</option>
+            <option value="eng-writing|English Rhetoric & Writing|Wallachia|special">Add Special (20-Fortress): English
+              Writing (Wallachia)</option>
+            <option value="arabic-lang|Classical Arabic Mastery|Tripolitania|special">Add Special (20-Fortress):
+              Classical Arabic (Tripolitania)</option>
+          </select>
+          <button id="addCountryBtn" type="button"
+            class="px-3.5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-obsidian font-bold text-xs uppercase tracking-wider transition">
+            + Annex Territory
+          </button>
+        </div>
+      </div>
+
+      <!-- Country Selector & Filter Strip -->
+      <div class="bg-charcoal/90 ottoman-border rounded-2xl p-4 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-2 flex-1">
+            <label for="atlasCountrySelect"
+              class="text-xs font-bold uppercase tracking-wider text-amber-300 shrink-0">Inspect Territory:</label>
+            <select id="atlasCountrySelect"
+              class="w-full sm:max-w-md bg-obsidian border border-amber-500/40 rounded-xl px-3 py-2 text-xs text-gray-100 font-semibold focus:outline-none focus:border-amber-400">
+            </select>
+          </div>
+          <div class="flex items-center gap-2">
+            <label for="atlasStatusFilter" class="text-xs text-gray-400">Filter:</label>
+            <select id="atlasStatusFilter"
+              class="bg-obsidian border border-amber-500/30 rounded-xl px-3 py-2 text-xs text-gray-200 focus:outline-none">
+              <option value="all">All Fortresses</option>
+              <option value="conquered">Conquered Only</option>
+              <option value="ready">Ready for Sultan Approval</option>
+              <option value="unconquered">Unconquered / In Progress</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Quick Country Pill Cards -->
+        <div id="countryQuickCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-2">
+        </div>
+      </div>
+
+      <!-- Selected Country Imperial Banner & Fortress Grid -->
+      <div id="selectedCountryDetailPanel" class="space-y-4">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- TAB 3: DAILY ROUTINE & MANDATORY 20-MINUTE PRAYER WINDOWS             -->
+    <!-- ===================================================================== -->
+    <section id="tab-daily-routine" class="tab-panel hidden space-y-5">
+      <div class="bg-charcoal/95 ottoman-border rounded-2xl p-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-amber-500/25 pb-4">
+          <div>
+            <h2 class="font-imperial text-xl font-bold gold-gradient-text">Imperial Daily Routine &amp; Sacred Prayer
+              Windows</h2>
+            <p class="text-xs text-gray-300 mt-1">
+              Every prayer window enforces a <span class="text-emerald-400 font-bold">mandatory 20-minute
+                interval</span> with automatic start and end war-horn alarms. Adjust prayer start windows below via
+              dropdowns.
+            </p>
+          </div>
+          <button id="resetRoutineDefaultsBtn" type="button"
+            class="px-3.5 py-2 rounded-xl bg-slatewar hover:bg-slate-800 text-amber-300 border border-amber-500/35 text-xs font-bold uppercase tracking-wider shrink-0">
+            Restore Default Schedule
+          </button>
+        </div>
+
+        <!-- Configurable 20-Minute Prayer Window Dropdowns -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mt-4 bg-obsidian/75 p-4 rounded-xl border border-amber-500/25">
+          <div>
+            <label for="fajrStartSelect" class="block text-[11px] font-bold uppercase text-emerald-400 mb-1">Fajr (20
+              Min Break)</label>
+            <select id="fajrStartSelect"
+              class="prayer-config-select w-full bg-slatewar border border-emerald-500/35 rounded-lg px-2.5 py-2 text-xs text-gray-100"
+              data-prayer="Fajr">
+              <option value="04:50">04:50 AM – 05:10 AM</option>
+              <option value="05:00">05:00 AM – 05:20 AM</option>
+              <option value="05:10" selected>05:10 AM – 05:30 AM</option>
+              <option value="05:20">05:20 AM – 05:40 AM</option>
+              <option value="05:30">05:30 AM – 05:50 AM</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="dhuhrStartSelect" class="block text-[11px] font-bold uppercase text-emerald-400 mb-1">Dhuhr (20
+              Min Break)</label>
+            <select id="dhuhrStartSelect"
+              class="prayer-config-select w-full bg-slatewar border border-emerald-500/35 rounded-lg px-2.5 py-2 text-xs text-gray-100"
+              data-prayer="Dhuhr">
+              <option value="12:00">12:00 PM – 12:20 PM</option>
+              <option value="12:15" selected>12:15 PM – 12:35 PM</option>
+              <option value="12:30">12:30 PM – 12:50 PM</option>
+              <option value="12:40">12:40 PM – 01:00 PM</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="asrStartSelect" class="block text-[11px] font-bold uppercase text-emerald-400 mb-1">Asr (20 Min
+              Break)</label>
+            <select id="asrStartSelect"
+              class="prayer-config-select w-full bg-slatewar border border-emerald-500/35 rounded-lg px-2.5 py-2 text-xs text-gray-100"
+              data-prayer="Asr">
+              <option value="15:45">03:45 PM – 04:05 PM</option>
+              <option value="16:00">04:00 PM – 04:20 PM</option>
+              <option value="16:15" selected>04:15 PM – 04:35 PM</option>
+              <option value="16:30">04:30 PM – 04:50 PM</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="maghribStartSelect" class="block text-[11px] font-bold uppercase text-emerald-400 mb-1">Maghrib
+              (20 Min Break)</label>
+            <select id="maghribStartSelect"
+              class="prayer-config-select w-full bg-slatewar border border-emerald-500/35 rounded-lg px-2.5 py-2 text-xs text-gray-100"
+              data-prayer="Maghrib">
+              <option value="17:30">05:30 PM – 05:50 PM</option>
+              <option value="17:45" selected>05:45 PM – 06:05 PM</option>
+              <option value="18:00">06:00 PM – 06:20 PM</option>
+              <option value="18:15">06:15 PM – 06:35 PM</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="ishaStartSelect" class="block text-[11px] font-bold uppercase text-emerald-400 mb-1">Isha (20
+              Min Break)</label>
+            <select id="ishaStartSelect"
+              class="prayer-config-select w-full bg-slatewar border border-emerald-500/35 rounded-lg px-2.5 py-2 text-xs text-gray-100"
+              data-prayer="Isha">
+              <option value="19:45">07:45 PM – 08:05 PM</option>
+              <option value="20:00">08:00 PM – 08:20 PM</option>
+              <option value="20:30" selected>08:30 PM – 08:50 PM</option>
+              <option value="20:45">08:45 PM – 09:05 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Complete Daily Schedule Timeline -->
+        <div id="dailyRoutineTimeline" class="mt-5 space-y-2.5">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- TAB 4: CONQUEST CHRONICLES & VICTORY LOG                              -->
+    <!-- ===================================================================== -->
+    <section id="tab-conquest-history" class="tab-panel hidden space-y-5">
+      <div class="bg-charcoal/95 ottoman-border-strong rounded-2xl p-6 ottoman-pattern-bg text-center">
+        <div
+          class="inline-block px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[11px] font-bold uppercase tracking-widest mb-2">
+          Imperial Archives of the Sublime Porte
+        </div>
+        <h2 class="font-imperial text-2xl sm:text-3xl font-extrabold gold-gradient-text">
+          Victory Through Knowledge!
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-300 max-w-2xl mx-auto mt-1">
+          Permanent ledger of all 13 Knowledge Territories, Sovereign Conquest Counts (<span
+            class="text-emerald-400 font-semibold">Conquered Nx</span>), Fortress Commanders, Liberation Campaigns, and
+          Sultan Decrees.
+        </p>
+      </div>
+
+      <!-- Summary Table of All Territories & Conquest Counts -->
+      <div class="bg-charcoal/95 ottoman-border rounded-2xl p-5 overflow-x-auto">
+        <h3 class="font-imperial text-base font-bold text-amber-300 mb-3">Territory Conquest Ledger</h3>
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-amber-500/30 text-amber-300 uppercase text-[11px]">
+              <th class="py-2.5 px-3">Country / Realm</th>
+              <th class="py-2.5 px-3">Academic Subject / Skill</th>
+              <th class="py-2.5 px-3">Status</th>
+              <th class="py-2.5 px-3">Victory Counter</th>
+              <th class="py-2.5 px-3">Fortresses Conquered</th>
+              <th class="py-2.5 px-3">Parts / Classes</th>
+            </tr>
+          </thead>
+          <tbody id="chroniclesSummaryTableBody" class="divide-y divide-gray-800">
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chronological Sultan Decrees & Activity Feed -->
+      <div class="bg-charcoal/95 ottoman-border rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-imperial text-base font-bold text-amber-300">Imperial Decree &amp; Campaign Chronicles</h3>
+          <span id="chronicleCountBadge" class="text-xs font-mono text-gray-400">0 Entries</span>
+        </div>
+        <div id="chronicleEventsList" class="space-y-2.5 max-h-[420px] overflow-y-auto pr-1">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 1: EXPLICIT SULTAN CONQUEST APPROVAL & ROYAL DECREE             -->
+  <!-- ===================================================================== -->
+  <div id="sultanApprovalModal"
+    class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div
+      class="bg-charcoal ottoman-border-strong rounded-2xl max-w-lg w-full p-6 space-y-4 ottoman-pattern-bg shadow-2xl">
+      <div class="text-center space-y-2">
+        <div
+          class="w-14 h-14 mx-auto rounded-2xl bg-amber-500/20 border border-amber-400 flex items-center justify-center text-amber-300">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z" />
+          </svg>
+        </div>
+        <span
+          class="px-3 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">
+          Sublime Porte Imperial Seal Required
+        </span>
+        <h3 id="sultanModalTitle" class="font-imperial text-xl font-extrabold gold-gradient-text">
+          Grant Sovereign Conquest Decree
+        </h3>
+        <p id="sultanModalDescription" class="text-xs text-gray-200 leading-relaxed">
+          All tactical prerequisites have been satisfied. No territory is ever marked Conquered without the explicit
+          approval of the Sultan.
+        </p>
+      </div>
+
+      <div id="sultanModalDetailsBox"
+        class="bg-obsidian/90 border border-amber-500/30 rounded-xl p-3.5 text-xs space-y-1.5">
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+        <button id="confirmSultanApprovalBtn" type="button"
+          class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-obsidian font-extrabold text-xs uppercase tracking-wider shadow-lg transition">
+          Sign Imperial Firman (Mark Conquered)
+        </button>
+        <button id="cancelSultanApprovalBtn" type="button"
+          class="py-3 px-4 rounded-xl bg-slatewar hover:bg-slate-800 text-gray-300 border border-gray-700 text-xs font-bold uppercase tracking-wider">
+          Defer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 2: ROYAL CELEBRATION DECREE BANNER / POPUP                      -->
+  <!-- ===================================================================== -->
+  <div id="royalCelebrationModal"
+    class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div
+      class="bg-gradient-to-b from-charcoal to-obsidian border-2 border-amber-400 rounded-2xl max-w-lg w-full p-6 text-center space-y-4 shadow-[0_0_50px_rgba(212,175,55,0.35)]">
+      <div class="text-xs font-bold uppercase tracking-[0.25em] text-amber-400">Imperial Firman Proclaimed</div>
+      <h3 id="celebrationTitle" class="font-imperial text-2xl sm:text-3xl font-black gold-gradient-text">
+        TERRITORY CONQUERED!
+      </h3>
+      <div id="celebrationBadge"
+        class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-300 font-mono text-sm font-bold">
+        Conquered (1x)
+      </div>
+      <p id="celebrationMessage" class="text-xs sm:text-sm text-gray-200 leading-relaxed">
+      </p>
+      <div class="font-imperial text-sm font-bold text-amber-300 tracking-wider pt-1">
+        "Victory Through Knowledge!"
+      </div>
+      <button id="closeCelebrationBtn" type="button"
+        class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian font-extrabold text-xs uppercase tracking-wider shadow-lg">
+        Accept Imperial Honors &amp; Continue
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 3: LIBERATE / RESET FOR RE-CONQUEST CONFIRMATION                -->
+  <!-- ===================================================================== -->
+  <div id="liberateConfirmModal"
+    class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-charcoal border border-amber-500/50 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="space-y-1.5">
+        <span
+          class="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">
+          Re-Conquest Campaign Protocol
+        </span>
+        <h3 id="liberateModalTitle" class="font-imperial text-lg font-bold text-amber-300">
+          Liberate Territory for Re-Conquest?
+        </h3>
+        <p id="liberateModalText" class="text-xs text-gray-300 leading-relaxed">
+          This will reset active progress parts/classes back to 0 so you may conquer this territory again from the
+          beginning. Your permanent Victory Counter (<span class="text-emerald-400 font-bold">Conquered Nx</span>) will
+          be preserved!
+        </p>
+      </div>
+      <div class="flex gap-2.5 pt-2">
+        <button id="confirmLiberateBtn" type="button"
+          class="flex-1 py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian font-extrabold text-xs uppercase tracking-wider">
+          Confirm Liberation
+        </button>
+        <button id="cancelLiberateBtn" type="button"
+          class="py-2.5 px-4 rounded-xl bg-slatewar hover:bg-slate-800 text-gray-300 text-xs font-bold uppercase">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 4: CLOUD SYNC STATUS & ONE-CLICK JSON BACKUP / RESTORE          -->
+  <!-- ===================================================================== -->
+  <div id="syncDevicesModal"
+    class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div
+      class="bg-charcoal ottoman-border-strong rounded-2xl max-w-2xl w-full p-6 space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div class="flex items-center justify-between border-b border-amber-500/25 pb-3">
+        <div>
+          <h3 class="font-imperial text-lg font-bold gold-gradient-text">Imperial Cloud Sync &amp; JSON Backup</h3>
+          <p class="text-xs text-gray-400">Real-time Desktop &harr; Phone sync via Firebase Realtime Database +
+            One-Click Backup.</p>
+        </div>
+        <button id="closeSyncModalBtn" type="button"
+          class="px-3 py-1.5 rounded-lg bg-slatewar hover:bg-slate-800 text-gray-300 text-xs font-bold">
+          Close
+        </button>
+      </div>
+
+      <!-- Cloud Sync Status Box -->
+      <div class="bg-obsidian/90 border border-amber-500/30 rounded-xl p-3.5 space-y-1.5 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-gray-400 font-semibold">Firebase Realtime Cloud Status:</span>
+          <span id="modalCloudStatusBadge"
+            class="px-2.5 py-0.5 rounded-full font-mono text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">
+            Checking Configuration...
+          </span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-gray-400 font-semibold">Cloud Node Path:</span>
+          <span class="font-mono text-[11px] text-emerald-300">janissary_hq_empire/sultan_main_state</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-gray-400 font-semibold">Last Updated (Newer Wins):</span>
+          <span id="modalLastUpdatedText" class="font-mono text-[11px] text-amber-200">—</span>
+        </div>
+        <p id="modalCloudHintText" class="text-[11px] text-gray-400 pt-1">
+          Paste your Firebase config in <code>index.html</code> (marked <code>apiKey: "AIzaSyAAKSz2Bqh9aiFoAVAiEB8waJ5wzY_bCfo",
+  authDomain: "janissary-hq.firebaseapp.com",
+  databaseURL: "https://janissary-hq-default-rtdb.firebaseio.com",
+  projectId: "janissary-hq",
+  storageBucket: "janissary-hq.firebasestorage.app",
+  messagingSenderId: "934841074776",
+  appId: "1:934841074776:web:eafa3c96aa2b254257762d"</code>) for automatic real-time sync between Desktop and Phone.
+        </p>
+      </div>
+
+      <!-- One-Click JSON Backup & Restore + Sync Actions -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <button id="downloadBackupJsonBtn" type="button"
+          class="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-obsidian font-extrabold text-xs uppercase tracking-wider shadow">
+          Export Backup (JSON)
+        </button>
+        <label
+          class="py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-obsidian font-extrabold text-xs uppercase tracking-wider shadow text-center cursor-pointer">
+          Import Backup (JSON)
+          <input id="uploadBackupJsonInput" type="file" accept=".json,application/json" class="hidden" />
+        </label>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <button id="forcePushCloudBtn" type="button"
+          class="py-2.5 px-3 rounded-xl bg-slatewar hover:bg-slate-800 text-emerald-300 border border-emerald-500/40 font-bold text-xs uppercase tracking-wider">
+          Force Push Local &rarr; Cloud
+        </button>
+        <button id="copySyncCodeBtn" type="button"
+          class="py-2.5 px-3 rounded-xl bg-slatewar hover:bg-slate-800 text-amber-200 border border-amber-500/35 font-bold text-xs uppercase tracking-wider">
+          Copy Manual Sync Code
+        </button>
+      </div>
+
+      <!-- Optional Manual Sync Code Paste Area -->
+      <div class="space-y-2">
+        <label for="syncCodeTextarea" class="block text-xs font-semibold text-amber-300">
+          Manual Sync Code / URL (Optional fallback transfer)
+        </label>
+        <textarea id="syncCodeTextarea" rows="3"
+          placeholder="Click 'Copy Manual Sync Code' or paste a code here to restore..."
+          class="w-full bg-obsidian border border-amber-500/35 rounded-xl p-2.5 font-mono text-[11px] text-emerald-300 focus:outline-none focus:border-amber-400"></textarea>
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <button id="pasteLoadSyncCodeBtn" type="button"
+            class="py-2 px-4 rounded-xl bg-emerald-600/25 hover:bg-emerald-600/35 text-emerald-300 border border-emerald-500/40 font-bold text-xs uppercase tracking-wider">
+            Load Sync Code
+          </button>
+          <button id="generateSyncLinkBtn" type="button"
+            class="py-2 px-4 rounded-xl bg-slatewar hover:bg-slate-800 text-amber-200 border border-amber-500/35 font-bold text-xs uppercase tracking-wider">
+            Copy Sync Link (URL)
+          </button>
+        </div>
+      </div>
+
+      <div id="syncFeedbackMessage"
+        class="hidden rounded-xl p-3 text-xs font-semibold bg-emerald-500/15 border border-emerald-500/40 text-emerald-300">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- TOAST NOTIFICATION BANNER                                             -->
+  <!-- ===================================================================== -->
+  <div id="toastContainer" class="fixed bottom-4 right-4 z-50 space-y-2 max-w-sm pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION JAVASCRIPT (MODULAR FIREBASE REALTIME DB + OFFLINE CACHE)  -->
+  <!-- ===================================================================== -->
+  <script type="module">
+    import {initializeApp} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+    import {
+      getDatabase,
+      ref,
+      set,
+      onValue,
+      onDisconnect,
+    } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
+
+    (function () {
+      'use strict';
+
+      /* =====================================================================
+         FIREBASE CONFIGURATION (PASTE YOUR FIREBASE CONFIG OBJECT BELOW)
+         ===================================================================== */
+      const FIREBASE_CONFIG = {
+        // FIREBASE_CONFIG_HERE: Replace these placeholder values with your Firebase Web App config
+        apiKey: 'YOUR_API_KEY',
+        authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
+        databaseURL: 'https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com',
+        projectId: 'YOUR_PROJECT_ID',
+        storageBucket: 'YOUR_PROJECT_ID.appspot.com',
+        messagingSenderId: 'YOUR_SENDER_ID',
+        appId: 'YOUR_APP_ID',
+      };
+
+      const CLOUD_ROOT_PATH = 'janissary_hq_empire/sultan_main_state';
+
+      /* =====================================================================
+         1. MODULAR STORAGE LAYER: EmpireStorageManager (Firebase + LocalCache)
+         ===================================================================== */
+      class EmpireStorageManager {
+        constructor(storageKey = 'janissary_hq_empire_state_v1') {
+          this.storageKey = storageKey;
+          this.db = null;
+          this.stateRef = null;
+          this.cloudConfigured = false;
+          this.isOnline = false;
+          this.isApplyingRemote = false;
+          this.onRemoteStateCallback = null;
+          this.onStatusChangeCallback = null;
+        }
+
+        isFirebaseConfigured() {
+          return (
+            FIREBASE_CONFIG &&
+            typeof FIREBASE_CONFIG.databaseURL === 'string' &&
+            FIREBASE_CONFIG.databaseURL.startsWith('https://') &&
+            !FIREBASE_CONFIG.databaseURL.includes('YOUR_PROJECT_ID') &&
+            typeof FIREBASE_CONFIG.apiKey === 'string' &&
+            !FIREBASE_CONFIG.apiKey.includes('YOUR_API_KEY')
+          );
+        }
+
+        initCloudSync(onRemoteState, onStatusChange) {
+          this.onRemoteStateCallback = onRemoteState;
+          this.onStatusChangeCallback = onStatusChange;
+
+          if (!this.isFirebaseConfigured()) {
+            this.cloudConfigured = false;
+            this.isOnline = false;
+            this.notifyStatus('Offline (Setup Needed)', false);
+            return;
+          }
+
+          try {
+            const app = initializeApp(FIREBASE_CONFIG);
+            this.db = getDatabase(app);
+            this.stateRef = ref(this.db, CLOUD_ROOT_PATH);
+            this.cloudConfigured = true;
+
+            // Monitor Firebase connection status (.info/connected)
+            const connectedRef = ref(this.db, '.info/connected');
+            onValue(connectedRef, (snap) => {
+              const connected = snap.val() === true;
+              this.isOnline = connected;
+              if (connected) {
+                this.notifyStatus('Synced', true);
+                // When reconnected after offline edits, push newer local state if local is newer
+                const local = this.load();
+                if (local && local.lastUpdated) {
+                  this.pushToCloud(local);
+                }
+              } else {
+                this.notifyStatus('Offline', false);
+              }
+            });
+
+            // Real-Time Two-Way Listener (onValue)
+            onValue(
+              this.stateRef,
+              (snapshot) => {
+                const cloudData = snapshot.val();
+                const localData = this.load();
+
+                if (!cloudData) {
+                  // Cloud node is empty -> seed cloud with local state
+                  if (localData) {
+                    this.pushToCloud(localData);
+                  }
+                  return;
+                }
+
+                // Ensure arrays exist (Firebase RTDB omits empty arrays)
+                const normalizedCloud = this.normalizeStateShape(cloudData);
+                const cloudTs = Number(normalizedCloud.lastUpdated || 0);
+                const localTs = Number((localData && localData.lastUpdated) || 0);
+
+                // Newer Wins Automatically: only apply cloud state if strictly newer than local
+                if (cloudTs > localTs) {
+                  this.isApplyingRemote = true;
+                  try {
+                    localStorage.setItem(this.storageKey, JSON.stringify(normalizedCloud));
+                    if (typeof this.onRemoteStateCallback === 'function') {
+                      this.onRemoteStateCallback(normalizedCloud);
+                    }
+                  } finally {
+                    this.isApplyingRemote = false;
+                  }
+                } else if (localTs > cloudTs && localData) {
+                  // Local state is newer (e.g. edited while offline) -> push local up to cloud
+                  this.pushToCloud(localData);
+                }
+              },
+              (error) => {
+                console.warn('Firebase onValue listener error:', error);
+                this.notifyStatus('Offline', false);
+              }
+            );
+          } catch (err) {
+            console.error('Firebase initialization failed:', err);
+            this.cloudConfigured = false;
+            this.isOnline = false;
+            this.notifyStatus('Offline', false);
+          }
+        }
+
+        normalizeStateShape(raw) {
+          if (!raw || typeof raw !== 'object') return raw;
+          if (!Array.isArray(raw.countries)) {
+            raw.countries = raw.countries ? Object.values(raw.countries) : [];
+          }
+          raw.countries.forEach((c) => {
+            if (!Array.isArray(c.years)) {
+              c.years = c.years ? Object.values(c.years) : [];
+            }
+            if (!Array.isArray(c.fortresses)) {
+              c.fortresses = c.fortresses ? Object.values(c.fortresses) : [];
+            }
+          });
+          if (!Array.isArray(raw.reinforcementQueue)) {
+            raw.reinforcementQueue = raw.reinforcementQueue
+              ? Object.values(raw.reinforcementQueue)
+              : [];
+          }
+          if (!Array.isArray(raw.chronicles)) {
+            raw.chronicles = raw.chronicles ? Object.values(raw.chronicles) : [];
+          }
+          if (!raw.reportedExpiredDivisions || typeof raw.reportedExpiredDivisions !== 'object') {
+            raw.reportedExpiredDivisions = {};
+          }
+          return raw;
+        }
+
+        notifyStatus(label, isSynced) {
+          if (typeof this.onStatusChangeCallback === 'function') {
+            this.onStatusChangeCallback(label, isSynced, this.cloudConfigured);
+          }
+        }
+
+        pushToCloud(state) {
+          if (!this.cloudConfigured || !this.stateRef) return;
+          set(this.stateRef, state)
+            .then(() => {
+              this.notifyStatus('Synced', true);
+            })
+            .catch((err) => {
+              console.warn('Cloud push deferred (offline):', err);
+              this.notifyStatus('Offline', false);
+            });
+        }
+
+        save(state, forceTimestamp = true) {
+          try {
+            if (forceTimestamp) {
+              state.lastUpdated = Date.now();
+            } else if (!state.lastUpdated) {
+              state.lastUpdated = Date.now();
+            }
+            const payload = JSON.stringify(state);
+            localStorage.setItem(this.storageKey, payload);
+
+            if (!this.isApplyingRemote && this.cloudConfigured && this.stateRef) {
+              this.pushToCloud(state);
+            }
+            return true;
+          } catch (err) {
+            console.error('EmpireStorageManager save failed:', err);
+            return false;
+          }
+        }
+
+        load() {
+          try {
+            const raw = localStorage.getItem(this.storageKey);
+            if (!raw) return null;
+            return this.normalizeStateShape(JSON.parse(raw));
+          } catch (err) {
+            console.error('EmpireStorageManager load failed:', err);
+            return null;
+          }
+        }
+
+        encodeSyncString(state) {
+          try {
+            const json = JSON.stringify(state);
+            const utf8Bytes = new TextEncoder().encode(json);
+            let binary = '';
+            for (let i = 0; i < utf8Bytes.length; i++) {
+              binary += String.fromCharCode(utf8Bytes[i]);
+            }
+            return 'JHQ1:' + btoa(binary);
+          } catch (err) {
+            console.error('Sync encoding error:', err);
+            return '';
+          }
+        }
+
+        decodeSyncString(codeStr) {
+          try {
+            let clean = (codeStr || '').trim();
+            if (clean.includes('#sync=')) {
+              clean = decodeURIComponent(clean.split('#sync=')[1]);
+            }
+            if (!clean.startsWith('JHQ1:')) {
+              const parsedRaw = JSON.parse(clean);
+              if (parsedRaw && Array.isArray(parsedRaw.countries)) {
+                return this.normalizeStateShape(parsedRaw);
+              }
+              return null;
+            }
+            const b64 = clean.slice(5);
+            const binary = atob(b64);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+              bytes[i] = binary.charCodeAt(i);
+            }
+            const json = new TextDecoder().decode(bytes);
+            const parsed = JSON.parse(json);
+            if (parsed && Array.isArray(parsed.countries)) {
+              return this.normalizeStateShape(parsed);
+            }
+            return null;
+          } catch (err) {
+            console.error('Sync decoding error:', err);
+            return null;
+          }
+        }
+      }
+
+      const storageManager = new EmpireStorageManager();
+
+      /* =====================================================================
+         2. BUILT-IN WEB AUDIO ALARM ENGINE (ZERO EXTERNAL DEPENDENCIES)
+         ===================================================================== */
+      class ImperialAlarmEngine {
+        constructor() {
+          this.audioCtx = null;
+          this.soundEnabled = true;
+          this.isRinging = false;
+          this.ringInterval = null;
+          this.triggeredKeys = new Set();
+        }
+
+        ensureContext() {
+          if (!this.audioCtx) {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (AudioCtx) {
+              this.audioCtx = new AudioCtx();
+            }
+          }
+          if (this.audioCtx && this.audioCtx.state === 'suspended') {
+            this.audioCtx.resume().catch(() => { });
+          }
+        }
+
+        playWarHornChime() {
+          if (!this.soundEnabled) return;
+          try {
+            this.ensureContext();
+            if (!this.audioCtx) return;
+            const now = this.audioCtx.currentTime;
+            const notes = [293.66, 440.0, 587.33, 440.0];
+            notes.forEach((freq, idx) => {
+              const osc = this.audioCtx.createOscillator();
+              const gain = this.audioCtx.createGain();
+              osc.type = idx % 2 === 0 ? 'triangle' : 'sine';
+              osc.frequency.setValueAtTime(freq, now + idx * 0.22);
+
+              gain.gain.setValueAtTime(0.001, now + idx * 0.22);
+              gain.gain.exponentialRampToValueAtTime(0.22, now + idx * 0.22 + 0.04);
+              gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.22 + 0.38);
+
+              osc.connect(gain);
+              gain.connect(this.audioCtx.destination);
+
+              osc.start(now + idx * 0.22);
+              osc.stop(now + idx * 0.22 + 0.4);
+            });
+          } catch (e) {
+            console.warn('Audio playback blocked until user interaction:', e);
+          }
+        }
+
+        triggerAlarm(title, message, continuous = true) {
+          this.isRinging = true;
+          const banner = document.getElementById('activeAlarmBanner');
+          const bannerTitle = document.getElementById('alarmBannerTitle');
+          const bannerMsg = document.getElementById('alarmBannerMessage');
+          const statusText = document.getElementById('alarmStatusText');
+
+          if (banner && bannerTitle && bannerMsg) {
+            bannerTitle.textContent = title;
+            bannerMsg.textContent = message;
+            banner.classList.remove('hidden');
+          }
+          if (statusText) {
+            statusText.textContent = 'ALARM SOUNDING!';
+            statusText.className = 'font-mono text-amber-400 font-bold animate-pulse shrink-0';
+          }
+
+          this.playWarHornChime();
+          if (this.ringInterval) clearInterval(this.ringInterval);
+          if (continuous) {
+            this.ringInterval = setInterval(() => {
+              if (this.isRinging) this.playWarHornChime();
+            }, 2600);
+          }
+
+          if ('Notification' in window && Notification.permission === 'granted') {
+            try {
+              new Notification('Janissary HQ: ' + title, {body: message});
+            } catch (_) { }
+          }
+        }
+
+        stopAlarm() {
+          this.isRinging = false;
+          if (this.ringInterval) {
+            clearInterval(this.ringInterval);
+            this.ringInterval = null;
+          }
+          const banner = document.getElementById('activeAlarmBanner');
+          const statusText = document.getElementById('alarmStatusText');
+          if (banner) banner.classList.add('hidden');
+          if (statusText) {
+            statusText.textContent = this.soundEnabled ? 'Alarm Sentinel Armed' : 'Alarm Muted (Visual Only)';
+            statusText.className = 'font-mono text-emerald-400 font-semibold shrink-0';
+          }
+        }
+      }
+
+      const alarmEngine = new ImperialAlarmEngine();
+
+      /* =====================================================================
+         3. HISTORIC COMMANDERS, FORTRESS NAMES & 13 PRE-LOADED COUNTRIES
+         ===================================================================== */
+      const OTTOMAN_COMMANDERS = [
+        'Kara Mustafa Pasha',
+        'Pargali Ibrahim Pasha',
+        'Sokollu Mehmed Pasha',
+        'Barbarossa Hayreddin',
+        'Turgut Reis',
+        'Koca Sinan Pasha',
+        'Lala Mustafa Pasha',
+        'Gazi Osman Pasha',
+        'Gedik Ahmed Pasha',
+        'Oruç Reis',
+        'Kılıç Ali Pasha',
+        'Özdemiroğlu Osman Pasha',
+        'Piyale Pasha',
+        'Çandarlı Halil Pasha',
+        'Köprülü Mehmed Pasha',
+        'Fazıl Ahmed Pasha',
+        'Alemdar Mustafa Pasha',
+        'Cezzar Ahmed Pasha',
+        'Tiryaki Hasan Pasha',
+        'Malkoçoğlu Bali Bey',
+      ];
+
+      const HISTORIC_FORTRESS_NAMES = [
+        'Rumeli Hisarı Citadel',
+        'Anadolu Hisarı Bastion',
+        'Belgrade Gate Fortress',
+        'Buda Royal Citadel',
+        'Eger Star Bastion',
+        'Rhodes Harbor Fortress',
+        'Candia Sea Citadel',
+        'Khotyn River Fortress',
+        'Kamianets Stone Bastion',
+        'Azov Frontier Citadel',
+        'Erzurum Highland Keep',
+        'Van Lake Citadel',
+        'Baghdad Tigris Bastion',
+        'Aleppo Crown Citadel',
+        'Damascus Gate Keep',
+        'Gallipoli Naval Fortress',
+        'Preveza Watchtower',
+        'Lepanto Gulf Citadel',
+        'Vidin Danube Fortress',
+        'Nicopolis Ridge Keep',
+      ];
+
+      const ANDALUSIAN_FORTRESS_NAMES = [
+        'Alhambra Fortress',
+        'Alcázar of Seville',
+        'Alcazaba of Málaga',
+        'Giralda Watch Citadel',
+        'Medina Azahara Keep',
+        'Calahorra Tower Bastion',
+        'Alcazaba of Almería',
+        'Gibralfaro Ridge Fortress',
+        'Aljafería Palace Citadel',
+        'Badajoz Alcazaba',
+        'Mérida Roman-Moorish Keep',
+        'Toledo Alcázar Citadel',
+        'Jaén Santa Catalina Keep',
+        'Ronda Tajo Fortress',
+        'Tarifa Strait Citadel',
+        'Granada Albaicín Bastion',
+        'Córdoba Bridge Fortress',
+        'Murcia Monteagudo Keep',
+        'Valencia Serranos Citadel',
+        'Algeciras Bay Fortress',
+      ];
+
+      const PRELOADED_COUNTRIES_SPEC = [
+        {id: 'bot-201', subject: 'Bot-201: Higher Cryptogams', country: 'Anatolia', type: 'standard'},
+        {id: 'bot-202', subject: 'Bot-202: Taxonomy of Angiosperms', country: 'Rumelia', type: 'standard'},
+        {id: 'bot-203', subject: 'Bot-203: Plant Anatomy and Embryology', country: 'Thrace', type: 'standard'},
+        {id: 'bot-204', subject: 'Bot-204: Practical-II', country: 'Macedonia', type: 'standard'},
+        {id: 'bot-205', subject: 'Bot-205: Viva-Voce', country: 'Epirus', type: 'standard'},
+        {id: 'cm-7201', subject: 'CM 7201: Selected Topics of Physical Chemistry', country: 'Mesopotamia', type: 'standard'},
+        {id: 'cm-7222', subject: 'CM 7222: Biologically Important Organic Compounds', country: 'Levant', type: 'standard'},
+        {id: 'cm-7241', subject: 'CM 7241: Chemistry of the Elements', country: 'Cappadocia', type: 'standard'},
+        {id: 'zoo-1', subject: 'Zoology - 1', country: 'Cilicia', type: 'standard'},
+        {id: 'acz-2001', subject: 'ACZ 2001: Zoology-II', country: 'Cyprus', type: 'standard'},
+        {id: 'aczl', subject: 'ACZL: Zoology Practical-II', country: 'Crete', type: 'standard'},
+        {id: 'eng-221109', subject: '221109: English (Compulsory)', country: 'Morea', type: 'standard'},
+        {id: 'eng-speaking', subject: 'English Speaking', country: 'Andalusia', type: 'special'},
+      ];
+
+      function buildCountryEntity(spec, idxOffset = 0) {
+        if (spec.type === 'special') {
+          const fortresses = [];
+          for (let f = 1; f <= 20; f++) {
+            const fName = ANDALUSIAN_FORTRESS_NAMES[(f - 1) % ANDALUSIAN_FORTRESS_NAMES.length];
+            const commander = OTTOMAN_COMMANDERS[(f - 1 + idxOffset) % OTTOMAN_COMMANDERS.length];
+            fortresses.push({
+              id: `${spec.id}-f${f}`,
+              number: f,
+              year: null,
+              name: `${fName} — (${spec.subject}, Fortress ${f})`,
+              shortName: fName,
+              commander,
+              partsRequired: 5,
+              partsCompleted: 0,
+              conquered: false,
+              conquestCount: 0,
+              lastConqueredAt: null,
+            });
+          }
+          return {
+            id: spec.id,
+            subject: spec.subject,
+            country: spec.country,
+            type: 'special',
+            conquered: false,
+            conquestCount: 0,
+            lastConqueredAt: null,
+            years: [],
+            fortresses,
+          };
+        } else {
+          const years = [];
+          const fortresses = [];
+          let globalF = 1;
+          for (let y = 1; y <= 5; y++) {
+            years.push({
+              yearNumber: y,
+              conquered: false,
+              conquestCount: 0,
+              lastConqueredAt: null,
+            });
+            for (let f = 1; f <= 8; f++) {
+              const baseFName = HISTORIC_FORTRESS_NAMES[(globalF - 1 + idxOffset) % HISTORIC_FORTRESS_NAMES.length];
+              const commander = OTTOMAN_COMMANDERS[(globalF - 1 + idxOffset * 2) % OTTOMAN_COMMANDERS.length];
+              fortresses.push({
+                id: `${spec.id}-y${y}-f${f}`,
+                number: globalF,
+                yearFortressIndex: f,
+                year: y,
+                name: `${baseFName} (Y${y}-F${f})`,
+                shortName: baseFName,
+                commander,
+                partsRequired: 3,
+                partsCompleted: 0,
+                conquered: false,
+                conquestCount: 0,
+                lastConqueredAt: null,
+              });
+              globalF++;
+            }
+          }
+          return {
+            id: spec.id,
+            subject: spec.subject,
+            country: spec.country,
+            type: 'standard',
+            conquered: false,
+            conquestCount: 0,
+            lastConqueredAt: null,
+            years,
+            fortresses,
+          };
+        }
+      }
+
+      /* =====================================================================
+         4. APPLICATION STATE & INITIALIZATION
+         ===================================================================== */
+      function createDefaultState() {
+        return {
+          lastUpdated: 0,
+          countries: PRELOADED_COUNTRIES_SPEC.map((spec, idx) => buildCountryEntity(spec, idx)),
+          prayerStarts: {
+            Fajr: '05:10',
+            Dhuhr: '12:15',
+            Asr: '16:15',
+            Maghrib: '17:45',
+            Isha: '20:30',
+          },
+          totalSoldiersDeployed: 0,
+          reinforcementQueue: [],
+          reportedExpiredDivisions: {},
+          chronicles: [
+            {
+              id: 'init-1',
+              timestamp: new Date().toLocaleString(),
+              type: 'DECREE',
+              title: 'Imperial War Room Established',
+              detail: '13 Knowledge Territories chartered across the Ottoman Empire. Victory Through Knowledge!',
+            },
+          ],
+          selectedCountryId: 'bot-201',
+          selectedYear: 1,
+          selectedFortressId: 'bot-201-y1-f1',
+          selectedPartTarget: 1,
+          selectedSoldierMinutes: 30,
+          selectedMehterMinutes: 10,
+        };
+      }
+
+      let appState = storageManager.load() || createDefaultState();
+
+      // Check URL hash for cross-device sync link on page load
+      if (window.location.hash && window.location.hash.includes('sync=')) {
+        const imported = storageManager.decodeSyncString(window.location.hash);
+        if (imported) {
+          appState = imported;
+          storageManager.save(appState);
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+          setTimeout(() => {
+            showToast('Cross-Device Empire State Restored from Sync Link!', 'emerald');
+          }, 400);
+        }
+      }
+
+      // Runtime UI & Timer state (non-persisted live controls)
+      let runtime = {
+        activeTab: 'war-room',
+        clockOverride: 'live',
+        timerRunning: false,
+        timerMode: 'battalion',
+        totalSeconds: appState.selectedSoldierMinutes * 60,
+        remainingSeconds: appState.selectedSoldierMinutes * 60,
+        timerInterval: null,
+        pendingSultanApproval: null,
+        pendingLiberation: null,
+        atlasCountryId: appState.selectedCountryId || 'bot-201',
+        atlasFilter: 'all',
+      };
+
+      function updateCloudStatusUI(statusLabel, isSynced, isConfigured) {
+        const headerBtn = document.getElementById('openSyncModalBtn');
+        const dotEl = document.getElementById('cloudSyncDot');
+        const labelEl = document.getElementById('cloudSyncLabel');
+        const modalBadge = document.getElementById('modalCloudStatusBadge');
+        const modalLastUpd = document.getElementById('modalLastUpdatedText');
+        const modalHint = document.getElementById('modalCloudHintText');
+
+        if (labelEl) {
+          labelEl.textContent = isSynced ? 'Cloud: Synced' : 'Cloud: Offline';
+        }
+        if (headerBtn && dotEl) {
+          if (isSynced) {
+            headerBtn.className =
+              'px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-emerald-500 to-emerald-400 text-obsidian hover:from-emerald-400 hover:to-emerald-300 shadow-md transition flex items-center gap-1.5';
+            dotEl.className = 'w-2 h-2 rounded-full bg-emerald-950 animate-pulse inline-block';
+          } else {
+            headerBtn.className =
+              'px-3 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-amber-600 to-amber-500 text-obsidian hover:from-amber-500 hover:to-amber-400 shadow-md transition flex items-center gap-1.5';
+            dotEl.className = 'w-2 h-2 rounded-full bg-red-900 inline-block';
+          }
+        }
+        if (modalBadge) {
+          modalBadge.textContent = statusLabel;
+          modalBadge.className = isSynced
+            ? 'px-2.5 py-0.5 rounded-full font-mono text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/50'
+            : 'px-2.5 py-0.5 rounded-full font-mono text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40';
+        }
+        if (modalLastUpd) {
+          modalLastUpd.textContent = appState.lastUpdated
+            ? new Date(appState.lastUpdated).toLocaleString()
+            : 'Not yet synced';
+        }
+        if (modalHint) {
+          modalHint.innerHTML = isConfigured
+            ? 'Firebase Realtime Database is active! Changes made on Desktop or Phone sync automatically in real time.'
+            : 'Paste your Firebase config in <code>index.html</code> (marked <code>FIREBASE_CONFIG_HERE</code>) to enable real-time Desktop &harr; Phone sync.';
+        }
+      }
+
+      /* =====================================================================
+         5. TIME UTILITIES, DAILY ROUTINE & 4 SEQUENTIAL DIVISIONS
+         ===================================================================== */
+      function timeStrToMinutes(hhmm) {
+        const [h, m] = hhmm.split(':').map(Number);
+        return h * 60 + m;
+      }
+
+      function minutesToTimeStr24(mins) {
+        const wrapped = ((mins % 1440) + 1440) % 1440;
+        const h = Math.floor(wrapped / 60);
+        const m = wrapped % 60;
+        return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+      }
+
+      function format12Hour(hhmm) {
+        const [h24, m] = hhmm.split(':').map(Number);
+        const suffix = h24 >= 12 ? 'PM' : 'AM';
+        const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+        return `${String(h12).padStart(2, '0')}:${String(m).padStart(2, '0')} ${suffix}`;
+      }
+
+      function getCurrentClockInfo() {
+        const now = new Date();
+        if (runtime.clockOverride !== 'live') {
+          const [h, m] = runtime.clockOverride.split(':').map(Number);
+          return {
+            hours: h,
+            minutes: m,
+            seconds: now.getSeconds(),
+            totalMinutes: h * 60 + m,
+            hhmm: runtime.clockOverride,
+            formatted: `${format12Hour(runtime.clockOverride)} (Demo)`,
+          };
+        }
+        const h = now.getHours();
+        const m = now.getMinutes();
+        const s = now.getSeconds();
+        const hhmm = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+        return {
+          hours: h,
+          minutes: m,
+          seconds: s,
+          totalMinutes: h * 60 + m,
+          hhmm,
+          formatted: `${format12Hour(hhmm)}:${String(s).padStart(2, '0')}`,
+        };
+      }
+
+      const DIVISIONS_SPEC = [
+        {
+          id: 'akinci',
+          name: 'Akinci Division',
+          role: 'Vanguard Scouts (Study Block 1)',
+          start: '04:00',
+          end: '08:00',
+          nextDivisionId: 'janissary',
+          nextDivisionName: 'Janissary Division',
+        },
+        {
+          id: 'janissary',
+          name: 'Janissary Division',
+          role: 'Core Imperial Regiment (Study Block 2)',
+          start: '08:30',
+          end: '13:00',
+          nextDivisionId: 'sipahi',
+          nextDivisionName: 'Sipahi Division',
+        },
+        {
+          id: 'sipahi',
+          name: 'Sipahi Division',
+          role: 'Heavy Cavalry Progression (Study Block 3)',
+          start: '13:30',
+          end: '20:30',
+          nextDivisionId: 'azap',
+          nextDivisionName: 'Azap Division',
+        },
+        {
+          id: 'azap',
+          name: 'Azap Division',
+          role: 'English Speaking & Assembly Planning',
+          start: '20:30',
+          end: '22:00',
+          nextDivisionId: 'akinci',
+          nextDivisionName: 'Next Day Akinci Division',
+        },
+      ];
+
+      function getDivisionStatus(div, currentMinutes) {
+        const startMin = timeStrToMinutes(div.start);
+        const endMin = timeStrToMinutes(div.end);
+        if (currentMinutes < startMin) return 'Scheduled';
+        if (currentMinutes >= startMin && currentMinutes < endMin) return 'Active';
+        return 'Locked (Time Expired)';
+      }
+
+      function buildFullDailySchedule() {
+        const p = appState.prayerStarts;
+        const prayers = [
+          {name: 'Fajr Prayer Break', start: p.Fajr, end: minutesToTimeStr24(timeStrToMinutes(p.Fajr) + 20)},
+          {name: 'Dhuhr Prayer Break', start: p.Dhuhr, end: minutesToTimeStr24(timeStrToMinutes(p.Dhuhr) + 20)},
+          {name: 'Asr Prayer Break', start: p.Asr, end: minutesToTimeStr24(timeStrToMinutes(p.Asr) + 20)},
+          {name: 'Maghrib Prayer Break', start: p.Maghrib, end: minutesToTimeStr24(timeStrToMinutes(p.Maghrib) + 20)},
+          {name: 'Isha Prayer Break', start: p.Isha, end: minutesToTimeStr24(timeStrToMinutes(p.Isha) + 20)},
+        ];
+
+        const baseBlocks = [
+          {start: '03:00', end: '03:30', title: 'Tahajjud Vigil', category: 'spiritual', note: 'Night devotion & mental clarity'},
+          {start: '03:30', end: '04:00', title: 'Morning Preparation', category: 'prep', note: 'Wudu, hydration & battle map review'},
+          {start: '04:00', end: '08:00', title: 'Study Block 1 — Akinci Division', category: 'division', note: `Includes mandatory 20-min Fajr Prayer (${format12Hour(prayers[0].start)} – ${format12Hour(prayers[0].end)})`},
+          {start: '08:00', end: '08:30', title: 'Morning Rations & Rest Break', category: 'break', note: '30-min scheduled recovery interval'},
+          {start: '08:30', end: '13:00', title: 'Study Block 2 — Janissary Division', category: 'division', note: `Includes mandatory 20-min Dhuhr Prayer (${format12Hour(prayers[1].start)} – ${format12Hour(prayers[1].end)})`},
+          {start: '13:00', end: '13:30', title: 'Midday Break', category: 'break', note: '30-min scheduled rest & meal interval'},
+          {start: '13:30', end: '20:30', title: 'Study Block 3 — Sipahi Division', category: 'division', note: `Includes mandatory 20-min Asr (${format12Hour(prayers[2].start)}) & Maghrib (${format12Hour(prayers[3].start)}) Prayers`},
+          {start: '20:30', end: '21:30', title: 'English Learning — Azap Vanguard', category: 'division', note: `Andalusia English Speaking + mandatory 20-min Isha Prayer (${format12Hour(prayers[4].start)} – ${format12Hour(prayers[4].end)})`},
+          {start: '21:30', end: '22:00', title: 'Assembly & Next Day Planning', category: 'assembly', note: 'Azap Command Council & reinforcement audit'},
+        ];
+
+        const prayerRows = prayers.map((pr) => ({
+          start: pr.start,
+          end: pr.end,
+          title: `${pr.name} (Mandatory 20 Minutes)`,
+          category: 'prayer',
+          note: 'All study timers pause for sacred 20-minute prayer obligation',
+        }));
+
+        const combined = [...baseBlocks, ...prayerRows].sort(
+          (a, b) => timeStrToMinutes(a.start) - timeStrToMinutes(b.start)
+        );
+        return {combined, prayers};
+      }
+
+      /* =====================================================================
+         6. HELPER FUNCTIONS FOR COUNTRIES, YEARS, FORTRESSES & CONQUESTS
+         ===================================================================== */
+      function getCountryById(id) {
+        return appState.countries.find((c) => c.id === id) || appState.countries[0];
+      }
+
+      function isFortressReadyForApproval(fortress) {
+        return !fortress.conquered && fortress.partsCompleted >= fortress.partsRequired;
+      }
+
+      function isYearReadyForApproval(country, yearNumber) {
+        if (country.type !== 'standard') return false;
+        const yearObj = country.years.find((y) => y.yearNumber === yearNumber);
+        if (!yearObj || yearObj.conquered) return false;
+        const yearFortresses = country.fortresses.filter((f) => f.year === yearNumber);
+        return yearFortresses.length === 8 && yearFortresses.every((f) => f.conquered);
+      }
+
+      function isCountryReadyForApproval(country) {
+        if (country.conquered) return false;
+        if (country.type === 'special') {
+          return country.fortresses.length === 20 && country.fortresses.every((f) => f.conquered);
+        } else {
+          return country.years.length === 5 && country.years.every((y) => y.conquered);
+        }
+      }
+
+      function addChronicleEntry(type, title, detail) {
+        appState.chronicles.unshift({
+          id: 'chr-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+          timestamp: new Date().toLocaleString(),
+          type,
+          title,
+          detail,
+        });
+        if (appState.chronicles.length > 200) {
+          appState.chronicles.length = 200;
+        }
+      }
+
+      function saveAndRefresh() {
+        storageManager.save(appState);
+        const modalLastUpd = document.getElementById('modalLastUpdatedText');
+        if (modalLastUpd && appState.lastUpdated) {
+          modalLastUpd.textContent = new Date(appState.lastUpdated).toLocaleString();
+        }
+        renderAll();
+      }
+
+      function showToast(message, tone = 'amber') {
+        const container = document.getElementById('toastContainer');
+        if (!container) return;
+        const colors = {
+          amber: 'bg-charcoal border-amber-400 text-amber-200',
+          emerald: 'bg-emerald-950 border-emerald-400 text-emerald-200',
+          red: 'bg-red-950 border-red-400 text-red-200',
+        };
+        const el = document.createElement('div');
+        el.className = `pointer-events-auto rounded-xl border px-4 py-3 text-xs font-semibold shadow-2xl transition-all ${colors[tone] || colors.amber}`;
+        el.textContent = message;
+        container.appendChild(el);
+        setTimeout(() => {
+          el.style.opacity = '0';
+          setTimeout(() => el.remove(), 300);
+        }, 3600);
+      }
+
+      /* =====================================================================
+         7. REAL-TIME CLOCK & ALARM SENTINEL LOOP
+         ===================================================================== */
+      function checkScheduledAlarms(clockInfo) {
+        const hhmm = clockInfo.hhmm;
+        const {prayers} = buildFullDailySchedule();
+
+        DIVISIONS_SPEC.forEach((div) => {
+          const startKey = `${hhmm}-div-start-${div.id}`;
+          const endKey = `${hhmm}-div-end-${div.id}`;
+
+          if (hhmm === div.start && !alarmEngine.triggeredKeys.has(startKey)) {
+            alarmEngine.triggeredKeys.add(startKey);
+            alarmEngine.triggerAlarm(
+              `${div.name} Mobilization`,
+              `${div.name} (${div.role}) window has commenced (${format12Hour(div.start)} – ${format12Hour(div.end)}).`
+            );
+          }
+
+          if (hhmm === div.end && !alarmEngine.triggeredKeys.has(endKey)) {
+            alarmEngine.triggeredKeys.add(endKey);
+            alarmEngine.triggerAlarm(
+              `${div.name} Window Expired`,
+              `${div.name} time window has closed and is now Locked. Submit your Post-Expiry Work Report immediately.`
+            );
+          }
+        });
+
+        prayers.forEach((pr) => {
+          const pStartKey = `${hhmm}-prayer-start-${pr.name}`;
+          const pEndKey = `${hhmm}-prayer-end-${pr.name}`;
+
+          if (hhmm === pr.start && !alarmEngine.triggeredKeys.has(pStartKey)) {
+            alarmEngine.triggeredKeys.add(pStartKey);
+            if (runtime.timerRunning) {
+              pauseTimer();
+            }
+            alarmEngine.triggerAlarm(
+              `Mandatory 20-Minute ${pr.name}`,
+              `Sacred 20-minute interval (${format12Hour(pr.start)} – ${format12Hour(pr.end)}). Active battalion paused for prayer.`
+            );
+          }
+
+          if (hhmm === pr.end && !alarmEngine.triggeredKeys.has(pEndKey)) {
+            alarmEngine.triggeredKeys.add(pEndKey);
+            alarmEngine.triggerAlarm(
+              `${pr.name} Concluded — Resume Campaign`,
+              `The 20-minute ${pr.name} interval has concluded. Soldiers return to battle stations.`
+            );
+          }
+        });
+
+        const breaks = [
+          {name: 'Morning Rations Break', start: '08:00', end: '08:30'},
+          {name: 'Midday Break', start: '13:00', end: '13:30'},
+        ];
+        breaks.forEach((br) => {
+          const bStartKey = `${hhmm}-brk-start-${br.name}`;
+          const bEndKey = `${hhmm}-brk-end-${br.name}`;
+          if (hhmm === br.start && !alarmEngine.triggeredKeys.has(bStartKey)) {
+            alarmEngine.triggeredKeys.add(bStartKey);
+            alarmEngine.triggerAlarm(`${br.name} Started`, `${br.name} (${format12Hour(br.start)} – ${format12Hour(br.end)}).`);
+          }
+          if (hhmm === br.end && !alarmEngine.triggeredKeys.has(bEndKey)) {
+            alarmEngine.triggeredKeys.add(bEndKey);
+            alarmEngine.triggerAlarm(`${br.name} Ended`, `Resume sequential division operations.`);
+          }
+        });
+      }
+
+      function updateClockAndLiveStatuses() {
+        const clockInfo = getCurrentClockInfo();
+        const desktopClock = document.getElementById('desktopClockDisplay');
+        const mobileClock = document.getElementById('mobileClockDisplay');
+        if (desktopClock) desktopClock.textContent = clockInfo.formatted;
+        if (mobileClock) mobileClock.textContent = clockInfo.formatted;
+
+        checkScheduledAlarms(clockInfo);
+        renderDivisionsAndWindowLocks(clockInfo);
+        renderDailyRoutineTimeline(clockInfo);
+      }
+
+      /* =====================================================================
+         8. MINUTE-SOLDIER BATTALION TIMER & OBJECTIVE COMPLETION
+         ===================================================================== */
+      function formatSecondsMMSS(sec) {
+        const s = Math.max(0, Math.floor(sec));
+        const m = Math.floor(s / 60);
+        const rem = s % 60;
+        return `${String(m).padStart(2, '0')}:${String(rem).padStart(2, '0')}`;
+      }
+
+      function renderSoldierGrid() {
+        const grid = document.getElementById('soldierGridContainer');
+        const timerDisplay = document.getElementById('battalionTimerDisplay');
+        const fractionEl = document.getElementById('soldierProgressFraction');
+        if (!grid || !timerDisplay || !fractionEl) return;
+
+        timerDisplay.textContent = formatSecondsMMSS(runtime.remainingSeconds);
+
+        const totalSoldiers =
+          runtime.timerMode === 'mehter'
+            ? appState.selectedMehterMinutes
+            : appState.selectedSoldierMinutes;
+
+        const elapsedSeconds = Math.max(0, runtime.totalSeconds - runtime.remainingSeconds);
+        const completedSoldiers = Math.min(totalSoldiers, Math.floor(elapsedSeconds / 60));
+        const activeSoldierIdx =
+          runtime.timerRunning && completedSoldiers < totalSoldiers ? completedSoldiers : -1;
+
+        fractionEl.textContent =
+          runtime.timerMode === 'mehter'
+            ? `Mehter March: ${completedSoldiers} / ${totalSoldiers} Min`
+            : `${completedSoldiers} / ${totalSoldiers} Soldiers`;
+
+        let html = '';
+        for (let i = 0; i < totalSoldiers; i++) {
+          let stateClass = 'bg-slatewar/90 border-amber-500/25 text-gray-500';
+          let label = 'Standby';
+          if (i < completedSoldiers) {
+            stateClass = 'bg-emerald-500/25 border-emerald-400 text-emerald-300 shadow-sm';
+            label = 'Completed';
+          } else if (i === activeSoldierIdx) {
+            stateClass = 'bg-amber-500/35 border-amber-300 text-amber-200 soldier-marching';
+            label = 'Marching';
+          }
+
+          html += `
+            <div title="Minute ${i + 1}: ${label}" class="rounded-lg border ${stateClass} p-1.5 flex flex-col items-center justify-center transition-all">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 4a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm0 11c-2.33 0-4.32-1.2-5.46-3 .03-1.8 3.64-2.8 5.46-2.8s5.43 1 5.46 2.8c-1.14 1.8-3.13 3-5.46 3z"/>
+              </svg>
+              <span class="font-mono text-[9px] mt-0.5 font-bold">${i + 1}m</span>
+            </div>
+          `;
+        }
+        grid.innerHTML = html;
+      }
+
+      function startTimer(mode = 'battalion') {
+        const clockInfo = getCurrentClockInfo();
+        const selectedDivId = document.getElementById('missionDivisionSelect')?.value || 'akinci';
+        const divObj = DIVISIONS_SPEC.find((d) => d.id === selectedDivId) || DIVISIONS_SPEC[0];
+        const status = getDivisionStatus(divObj, clockInfo.totalMinutes);
+
+        if (mode === 'battalion' && status === 'Locked (Time Expired)') {
+          showToast(`${divObj.name} window is Locked (Time Expired). Use Post-Expiry Report instead.`, 'red');
+          return;
+        }
+
+        if (runtime.timerMode !== mode) {
+          runtime.timerMode = mode;
+          const mins =
+            mode === 'mehter' ? appState.selectedMehterMinutes : appState.selectedSoldierMinutes;
+          runtime.totalSeconds = mins * 60;
+          runtime.remainingSeconds = mins * 60;
+        }
+
+        if (runtime.timerRunning) return;
+        runtime.timerRunning = true;
+        alarmEngine.ensureContext();
+
+        runtime.timerInterval = setInterval(() => {
+          if (runtime.remainingSeconds > 0) {
+            runtime.remainingSeconds--;
+            renderSoldierGrid();
+          } else {
+            clearInterval(runtime.timerInterval);
+            runtime.timerInterval = null;
+            runtime.timerRunning = false;
+            if (runtime.timerMode === 'mehter') {
+              alarmEngine.triggerAlarm(
+                'Mehter Recovery Complete',
+                `Your ${appState.selectedMehterMinutes}-minute Mehter recovery interval is complete.`,
+                false
+              );
+              runtime.timerMode = 'battalion';
+              runtime.totalSeconds = appState.selectedSoldierMinutes * 60;
+              runtime.remainingSeconds = appState.selectedSoldierMinutes * 60;
+              renderSoldierGrid();
+            } else {
+              completeCurrentObjective(appState.selectedSoldierMinutes);
+            }
+          }
+        }, 1000);
+
+        renderSoldierGrid();
+        showToast(
+          mode === 'mehter'
+            ? `Mehter Recovery March started (${appState.selectedMehterMinutes} min).`
+            : `${appState.selectedSoldierMinutes} Minute-Soldiers deployed to battle!`,
+          'emerald'
+        );
+      }
+
+      function pauseTimer() {
+        runtime.timerRunning = false;
+        if (runtime.timerInterval) {
+          clearInterval(runtime.timerInterval);
+          runtime.timerInterval = null;
+        }
+        renderSoldierGrid();
+      }
+
+      function completeCurrentObjective(soldiersAwarded) {
+        pauseTimer();
+        const clockInfo = getCurrentClockInfo();
+        const selectedDivId = document.getElementById('missionDivisionSelect')?.value || 'akinci';
+        const divObj = DIVISIONS_SPEC.find((d) => d.id === selectedDivId) || DIVISIONS_SPEC[0];
+        const status = getDivisionStatus(divObj, clockInfo.totalMinutes);
+
+        if (status === 'Locked (Time Expired)') {
+          showToast(`${divObj.name} is Locked (Time Expired). Cannot record new mission completions in an expired window.`, 'red');
+          return;
+        }
+
+        const country = getCountryById(appState.selectedCountryId);
+        const fortress =
+          country.fortresses.find((f) => f.id === appState.selectedFortressId) ||
+          country.fortresses[0];
+
+        appState.totalSoldiersDeployed += soldiersAwarded;
+
+        const targetPart = Number(appState.selectedPartTarget) || 1;
+        if (fortress.partsCompleted < fortress.partsRequired) {
+          fortress.partsCompleted = Math.min(
+            fortress.partsRequired,
+            Math.max(fortress.partsCompleted + 1, targetPart)
+          );
+        }
+
+        runtime.timerMode = 'battalion';
+        runtime.totalSeconds = appState.selectedSoldierMinutes * 60;
+        runtime.remainingSeconds = 0;
+
+        const unitLabel = country.type === 'special' ? 'Class' : 'Part';
+        addChronicleEntry(
+          'CAMPAIGN',
+          `${soldiersAwarded} Minute-Soldiers Victory at ${fortress.shortName}`,
+          `${divObj.name} completed ${unitLabel} ${fortress.partsCompleted}/${fortress.partsRequired} in ${country.country} (${country.subject}).`
+        );
+
+        alarmEngine.playWarHornChime();
+        saveAndRefresh();
+
+        if (isFortressReadyForApproval(fortress)) {
+          openSultanApprovalModal({
+            scope: 'fortress',
+            countryId: country.id,
+            fortressId: fortress.id,
+          });
+        } else {
+          showToast(
+            `${unitLabel} ${fortress.partsCompleted}/${fortress.partsRequired} completed (+${soldiersAwarded} Soldiers)!`,
+            'emerald'
+          );
+        }
+      }
+
+      /* =====================================================================
+         9. EXPLICIT SULTAN CONQUEST APPROVAL & ROYAL CELEBRATION DECREE
+         ===================================================================== */
+      function openSultanApprovalModal(target) {
+        runtime.pendingSultanApproval = target;
+        const modal = document.getElementById('sultanApprovalModal');
+        const titleEl = document.getElementById('sultanModalTitle');
+        const descEl = document.getElementById('sultanModalDescription');
+        const detailsEl = document.getElementById('sultanModalDetailsBox');
+
+        const country = getCountryById(target.countryId);
+        if (target.scope === 'fortress') {
+          const fortress = country.fortresses.find((f) => f.id === target.fortressId);
+          titleEl.textContent = `Sultan Approval: Conquer ${fortress.shortName}`;
+          descEl.textContent = `All ${fortress.partsRequired} ${country.type === 'special' ? 'Classes' : 'Parts'} of ${fortress.name} are complete. Grant your Imperial Firman to declare this Fortress Conquered.`;
+          detailsEl.innerHTML = `
+            <div class="flex justify-between"><span class="text-gray-400">Territory:</span><span class="text-amber-300 font-bold">${country.country} (${country.subject})</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Fortress:</span><span class="text-gray-100 font-semibold">${fortress.name}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Commander:</span><span class="text-emerald-300 font-semibold">${fortress.commander}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Prior Conquests:</span><span class="font-mono text-amber-300">${fortress.conquestCount}x</span></div>
+          `;
+        } else if (target.scope === 'year') {
+          titleEl.textContent = `Sultan Approval: Conquer Year ${target.yearNumber} of ${country.country}`;
+          descEl.textContent = `All 8 Fortresses (24 Parts & 8 Commanders) in Year ${target.yearNumber} are Conquered. Sign the decree to declare Year ${target.yearNumber} Conquered!`;
+          detailsEl.innerHTML = `
+            <div class="flex justify-between"><span class="text-gray-400">Country:</span><span class="text-amber-300 font-bold">${country.country} (${country.subject})</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Campaign Phase:</span><span class="text-emerald-300 font-bold">Year ${target.yearNumber} of 5 (8/8 Fortresses)</span></div>
+          `;
+        } else if (target.scope === 'country') {
+          titleEl.textContent = `Imperial Sovereignty: Conquer ${country.country}`;
+          descEl.textContent =
+            country.type === 'special'
+              ? `All 20 Fortresses (100 Classes) of ${country.subject} (${country.country}) are Conquered! Grant Sovereign Conquest status.`
+              : `All 5 Years (40 Fortresses, 40 Commanders, 120 Parts) of ${country.country} (${country.subject}) are Conquered! Grant Sovereign Conquest status.`;
+          detailsEl.innerHTML = `
+            <div class="flex justify-between"><span class="text-gray-400">Sovereign Realm:</span><span class="text-amber-300 font-bold">${country.country}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Academic / Skill Domain:</span><span class="text-gray-100">${country.subject}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Prior Realm Conquests:</span><span class="font-mono text-emerald-300">${country.conquestCount}x</span></div>
+          `;
+        }
+
+        modal.classList.remove('hidden');
+      }
+
+      function executeSultanApproval() {
+        const target = runtime.pendingSultanApproval;
+        if (!target) return;
+        document.getElementById('sultanApprovalModal').classList.add('hidden');
+        runtime.pendingSultanApproval = null;
+
+        const country = getCountryById(target.countryId);
+        const nowStr = new Date().toLocaleString();
+
+        if (target.scope === 'fortress') {
+          const fortress = country.fortresses.find((f) => f.id === target.fortressId);
+          if (!fortress || !isFortressReadyForApproval(fortress)) return;
+
+          fortress.conquered = true;
+          fortress.conquestCount += 1;
+          fortress.lastConqueredAt = nowStr;
+
+          addChronicleEntry(
+            'CONQUEST',
+            `Fortress Conquered (${fortress.conquestCount}x): ${fortress.shortName}`,
+            `By Sultan Decree, ${fortress.name} under Commander ${fortress.commander} in ${country.country} is declared Conquered!`
+          );
+
+          showRoyalCelebration(
+            `FORTRESS CONQUERED!`,
+            `Conquered (${fortress.conquestCount}x)`,
+            `By Imperial Firman of the Sultan, ${fortress.name} in ${country.country} (Commander ${fortress.commander}) has been officially declared CONQUERED!`
+          );
+
+          saveAndRefresh();
+
+          if (country.type === 'standard' && isYearReadyForApproval(country, fortress.year)) {
+            setTimeout(() => {
+              openSultanApprovalModal({
+                scope: 'year',
+                countryId: country.id,
+                yearNumber: fortress.year,
+              });
+            }, 600);
+          } else if (isCountryReadyForApproval(country)) {
+            setTimeout(() => {
+              openSultanApprovalModal({
+                scope: 'country',
+                countryId: country.id,
+              });
+            }, 600);
+          }
+        } else if (target.scope === 'year') {
+          const yearObj = country.years.find((y) => y.yearNumber === target.yearNumber);
+          if (!yearObj || !isYearReadyForApproval(country, target.yearNumber)) return;
+
+          yearObj.conquered = true;
+          yearObj.conquestCount += 1;
+          yearObj.lastConqueredAt = nowStr;
+
+          addChronicleEntry(
+            'CONQUEST',
+            `Year ${yearObj.yearNumber} Conquered (${yearObj.conquestCount}x): ${country.country}`,
+            `All 8 Fortresses & 24 Parts of Year ${yearObj.yearNumber} in ${country.country} (${country.subject}) conquered by Sultan Decree.`
+          );
+
+          showRoyalCelebration(
+            `YEAR ${yearObj.yearNumber} CONQUERED!`,
+            `Year ${yearObj.yearNumber} Conquered (${yearObj.conquestCount}x)`,
+            `All 8 Fortresses and 24 Parts of Year ${yearObj.yearNumber} in ${country.country} (${country.subject}) are now under Imperial Sovereignty!`
+          );
+
+          saveAndRefresh();
+
+          if (isCountryReadyForApproval(country)) {
+            setTimeout(() => {
+              openSultanApprovalModal({
+                scope: 'country',
+                countryId: country.id,
+              });
+            }, 600);
+          }
+        } else if (target.scope === 'country') {
+          if (!isCountryReadyForApproval(country)) return;
+
+          country.conquered = true;
+          country.conquestCount += 1;
+          country.lastConqueredAt = nowStr;
+
+          addChronicleEntry(
+            'IMPERIAL_CONQUEST',
+            `COUNTRY CONQUERED (${country.conquestCount}x): ${country.country.toUpperCase()}`,
+            `Full sovereignty achieved over ${country.country} (${country.subject}) by explicit Sultan Decree!`
+          );
+
+          showRoyalCelebration(
+            `${country.country.toUpperCase()} CONQUERED!`,
+            `Country Conquered (${country.conquestCount}x)`,
+            `The entire realm of ${country.country} (${country.subject}) has bowed before the Imperial Banner! Permanent Victory Count: ${country.conquestCount}x.`
+          );
+
+          saveAndRefresh();
+        }
+      }
+
+      function showRoyalCelebration(title, badge, message) {
+        alarmEngine.playWarHornChime();
+        document.getElementById('celebrationTitle').textContent = title;
+        document.getElementById('celebrationBadge').textContent = badge;
+        document.getElementById('celebrationMessage').textContent = message;
+        document.getElementById('royalCelebrationModal').classList.remove('hidden');
+      }
+
+      /* =====================================================================
+         10. LIBERATE & RE-CONQUER SYSTEM (PRESERVING CONQUEST COUNT NX)
+         ===================================================================== */
+      function openLiberateModal(scope, countryId, fortressId = null) {
+        runtime.pendingLiberation = {scope, countryId, fortressId};
+        const country = getCountryById(countryId);
+        const titleEl = document.getElementById('liberateModalTitle');
+        const textEl = document.getElementById('liberateModalText');
+
+        if (scope === 'fortress') {
+          const f = country.fortresses.find((item) => item.id === fortressId);
+          titleEl.textContent = `Liberate ${f.shortName} for Re-Conquest?`;
+          textEl.innerHTML = `Are you sure? This resets <strong>${f.name}</strong> back to <code>0/${f.partsRequired}</code> so you can conquer it again from scratch. Its permanent Victory Counter (<strong>Conquered ${f.conquestCount}x</strong>) remains preserved!`;
+        } else {
+          titleEl.textContent = `Liberate Entire Country: ${country.country}?`;
+          textEl.innerHTML = `Are you sure? This resets all Fortresses and Years inside <strong>${country.country} (${country.subject})</strong> back to <code>0</code> so you can wage a fresh conquest campaign from the beginning. Your permanent Country Victory Counter (<strong>Conquered ${country.conquestCount}x</strong>) remains preserved!`;
+        }
+
+        document.getElementById('liberateConfirmModal').classList.remove('hidden');
+      }
+
+      function executeLiberation() {
+        const req = runtime.pendingLiberation;
+        if (!req) return;
+        document.getElementById('liberateConfirmModal').classList.add('hidden');
+        runtime.pendingLiberation = null;
+
+        const country = getCountryById(req.countryId);
+
+        if (req.scope === 'fortress') {
+          const f = country.fortresses.find((item) => item.id === req.fortressId);
+          if (!f) return;
+          f.conquered = false;
+          f.partsCompleted = 0;
+
+          if (country.type === 'standard' && f.year) {
+            const yr = country.years.find((y) => y.yearNumber === f.year);
+            if (yr) yr.conquered = false;
+          }
+          country.conquered = false;
+
+          addChronicleEntry(
+            'LIBERATION',
+            `Fortress Liberated for Re-Conquest: ${f.shortName}`,
+            `${f.name} in ${country.country} reset to 0/${f.partsRequired} for a new campaign (Prior Victories: ${f.conquestCount}x).`
+          );
+          showToast(`${f.shortName} liberated for re-conquest! Victory count (${f.conquestCount}x) preserved.`, 'amber');
+        } else if (req.scope === 'country') {
+          country.conquered = false;
+          country.years.forEach((y) => {
+            y.conquered = false;
+          });
+          country.fortresses.forEach((f) => {
+            f.conquered = false;
+            f.partsCompleted = 0;
+          });
+
+          addChronicleEntry(
+            'LIBERATION',
+            `Country Liberated for Re-Conquest: ${country.country}`,
+            `All territories in ${country.country} (${country.subject}) reset to 0 for a new campaign (Prior Country Victories: ${country.conquestCount}x).`
+          );
+          showToast(`${country.country} liberated for a new campaign! Country victories (${country.conquestCount}x) preserved.`, 'amber');
+        }
+
+        saveAndRefresh();
+      }
+
+      /* =====================================================================
+         11. POST-EXPIRY WORK REPORT & AUTO-REINFORCEMENT DISPATCH
+         ===================================================================== */
+      function submitPostExpiryReport() {
+        const divId = document.getElementById('expiredDivisionSelect').value;
+        const pct = Number(document.getElementById('expiryCompletionSelect').value);
+        const lastUnit = document.getElementById('expiryLastUnitSelect').value;
+        const divObj = DIVISIONS_SPEC.find((d) => d.id === divId);
+        if (!divObj) return;
+
+        const todayKey = new Date().toISOString().slice(0, 10) + '-' + divId;
+        appState.reportedExpiredDivisions[todayKey] = {
+          pct,
+          lastUnit,
+          reportedAt: new Date().toLocaleTimeString(),
+        };
+
+        const country = getCountryById(appState.selectedCountryId);
+        const fortress =
+          country.fortresses.find((f) => f.id === appState.selectedFortressId) ||
+          country.fortresses[0];
+
+        if (pct < 100) {
+          const incompletePct = 100 - pct;
+          const reinforcementOrder = {
+            id: 'reinf-' + Date.now(),
+            fromDivisionId: divObj.id,
+            fromDivisionName: divObj.name,
+            toDivisionId: divObj.nextDivisionId,
+            toDivisionName: divObj.nextDivisionName,
+            incompletePct,
+            lastCompletedUnit: lastUnit,
+            countryId: country.id,
+            countryName: country.country,
+            subject: country.subject,
+            fortressId: fortress.id,
+            fortressName: fortress.shortName,
+            createdAt: new Date().toLocaleTimeString(),
+          };
+          appState.reinforcementQueue.push(reinforcementOrder);
+
+          addChronicleEntry(
+            'REINFORCEMENT',
+            `Auto-Reinforcement Dispatched: ${divObj.name} -> ${divObj.nextDivisionName}`,
+            `${incompletePct}% incomplete work from ${fortress.shortName} (${country.country}, last unit: ${lastUnit}) routed to ${divObj.nextDivisionName}.`
+          );
+
+          showToast(
+            `${incompletePct}% incomplete mission auto-routed to ${divObj.nextDivisionName}!`,
+            'amber'
+          );
+        } else {
+          addChronicleEntry(
+            'REPORT',
+            `${divObj.name} 100% Post-Expiry Report Filed`,
+            `Full completion verified for ${divObj.name} (last unit: ${lastUnit}). No reinforcements needed.`
+          );
+          showToast(`${divObj.name} 100% completion report logged!`, 'emerald');
+        }
+
+        saveAndRefresh();
+      }
+
+      /* =====================================================================
+         12. RENDERING FUNCTIONS FOR ALL UI VIEWS
+         ===================================================================== */
+      function renderKPIs(clockInfo) {
+        const countriesConquered = appState.countries.filter((c) => c.conquered).length;
+        const totalCountryVictories = appState.countries.reduce((acc, c) => acc + c.conquestCount, 0);
+
+        let fortressesConquered = 0;
+        let fortressesTotal = 0;
+        let fortressVictories = 0;
+        let partsDone = 0;
+        let partsTotal = 0;
+
+        appState.countries.forEach((c) => {
+          c.fortresses.forEach((f) => {
+            fortressesTotal++;
+            if (f.conquered) fortressesConquered++;
+            fortressVictories += f.conquestCount;
+            partsDone += f.partsCompleted;
+            partsTotal += f.partsRequired;
+          });
+        });
+
+        document.getElementById('kpiCountriesConquered').textContent = countriesConquered;
+        document.getElementById('kpiCountriesTotal').textContent = `/ ${appState.countries.length}`;
+        document.getElementById('kpiCountryConquestSum').textContent = `Total Victories: ${totalCountryVictories}x`;
+
+        document.getElementById('kpiFortressesConquered').textContent = fortressesConquered;
+        document.getElementById('kpiFortressesTotal').textContent = `/ ${fortressesTotal}`;
+        document.getElementById('kpiFortressConquestSum').textContent = `Total Victories: ${fortressVictories}x`;
+
+        document.getElementById('kpiPartsDone').textContent = partsDone;
+        document.getElementById('kpiPartsTotal').textContent = `/ ${partsTotal}`;
+        document.getElementById('kpiTotalSoldiers').textContent = appState.totalSoldiersDeployed;
+        document.getElementById('kpiReinforcements').textContent = appState.reinforcementQueue.length;
+
+        const activeDiv = DIVISIONS_SPEC.find(
+          (d) => getDivisionStatus(d, clockInfo.totalMinutes) === 'Active'
+        );
+        const activeDivEl = document.getElementById('kpiActiveDivision');
+        const activeWinEl = document.getElementById('kpiActiveWindow');
+        const mobileBadge = document.getElementById('mobileActiveDivBadge');
+
+        if (activeDiv) {
+          activeDivEl.textContent = activeDiv.name;
+          activeDivEl.className = 'mt-1 font-imperial text-base sm:text-lg font-bold text-emerald-400 truncate';
+          activeWinEl.textContent = `${format12Hour(activeDiv.start)} – ${format12Hour(activeDiv.end)}`;
+          if (mobileBadge) mobileBadge.textContent = `${activeDiv.name} Active`;
+        } else {
+          activeDivEl.textContent = 'Break / Off-Window';
+          activeDivEl.className = 'mt-1 font-imperial text-base sm:text-lg font-bold text-amber-300 truncate';
+          activeWinEl.textContent = 'Check Routine Schedule';
+          if (mobileBadge) mobileBadge.textContent = 'Interval Window';
+        }
+      }
+
+      function renderDivisionsAndWindowLocks(clockInfo) {
+        const grid = document.getElementById('divisionsCardsGrid');
+        const missionDivSelect = document.getElementById('missionDivisionSelect');
+        const expiredDivSelect = document.getElementById('expiredDivisionSelect');
+        const postExpiryPanel = document.getElementById('postExpiryPanel');
+        if (!grid || !missionDivSelect) return;
+
+        const prevSelectedDiv = missionDivSelect.value;
+        let cardsHtml = '';
+        let divOptionsHtml = '';
+        let expiredOptionsHtml = '';
+        const expiredDivs = [];
+
+        DIVISIONS_SPEC.forEach((div) => {
+          const status = getDivisionStatus(div, clockInfo.totalMinutes);
+          const incomingReinf = appState.reinforcementQueue.filter(
+            (r) => r.toDivisionId === div.id
+          );
+
+          let badgeClass = 'bg-slatewar text-gray-300 border-gray-600';
+          let borderClass = 'ottoman-border';
+          if (status === 'Active') {
+            badgeClass = 'bg-emerald-500/20 text-emerald-300 border-emerald-400/50';
+            borderClass = 'border border-emerald-400/60 shadow-[0_0_20px_rgba(16,185,129,0.12)]';
+          } else if (status === 'Locked (Time Expired)') {
+            badgeClass = 'bg-red-500/20 text-red-300 border-red-500/50';
+            borderClass = 'border border-red-500/40';
+            expiredDivs.push(div);
+            expiredOptionsHtml += `<option value="${div.id}">${div.name} (${format12Hour(div.start)} – ${format12Hour(div.end)})</option>`;
+          }
+
+          divOptionsHtml += `<option value="${div.id}">${div.name} — [${status}]</option>`;
+
+          cardsHtml += `
+            <div class="bg-charcoal/95 ${borderClass} rounded-2xl p-4 flex flex-col justify-between space-y-3">
+              <div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-imperial text-sm font-bold text-amber-300">${div.name}</span>
+                  <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full border ${badgeClass}">
+                    ${status}
+                  </span>
+                </div>
+                <p class="text-[11px] text-gray-400 mt-1">${div.role}</p>
+              </div>
+
+              <div class="flex items-center justify-between text-[11px] font-mono bg-obsidian/80 px-3 py-1.5 rounded-lg border border-amber-500/20">
+                <span class="text-gray-400">Window:</span>
+                <span class="text-amber-200 font-semibold">${format12Hour(div.start)} – ${format12Hour(div.end)}</span>
+              </div>
+
+              ${incomingReinf.length > 0
+              ? `<div class="text-[11px] bg-red-950/50 border border-red-500/40 text-red-200 rounded-lg px-2.5 py-1.5">
+                       <strong>+${incomingReinf.length} Reinforcement Order(s)</strong> from ${incomingReinf[0].fromDivisionName}
+                     </div>`
+              : `<div class="text-[11px] text-gray-500">Next Chain: ${div.nextDivisionName}</div>`
+            }
+            </div>
+          `;
+        });
+
+        grid.innerHTML = cardsHtml;
+        missionDivSelect.innerHTML = divOptionsHtml;
+
+        const activeDiv = DIVISIONS_SPEC.find(
+          (d) => getDivisionStatus(d, clockInfo.totalMinutes) === 'Active'
+        );
+        if (prevSelectedDiv && DIVISIONS_SPEC.some((d) => d.id === prevSelectedDiv)) {
+          missionDivSelect.value = prevSelectedDiv;
+        } else if (activeDiv) {
+          missionDivSelect.value = activeDiv.id;
+        }
+
+        if (expiredDivs.length > 0) {
+          postExpiryPanel.classList.remove('hidden');
+          const prevExp = expiredDivSelect.value;
+          expiredDivSelect.innerHTML = expiredOptionsHtml;
+          if (prevExp && expiredDivs.some((d) => d.id === prevExp)) {
+            expiredDivSelect.value = prevExp;
+          }
+        } else {
+          postExpiryPanel.classList.add('hidden');
+        }
+
+        updateMissionInputLocks(clockInfo);
+      }
+
+      function updateMissionInputLocks(clockInfo) {
+        const selectedDivId = document.getElementById('missionDivisionSelect')?.value || 'akinci';
+        const divObj = DIVISIONS_SPEC.find((d) => d.id === selectedDivId) || DIVISIONS_SPEC[0];
+        const status = getDivisionStatus(divObj, clockInfo.totalMinutes);
+
+        const lockBadge = document.getElementById('missionLockBadge');
+        const deployBtn = document.getElementById('startDeploymentBtn');
+        const completeBtn = document.getElementById('completeMissionNowBtn');
+        const countrySel = document.getElementById('missionCountrySelect');
+        const yearSel = document.getElementById('missionYearSelect');
+        const fortSel = document.getElementById('missionFortressSelect');
+        const partSel = document.getElementById('missionPartSelect');
+        const minSel = document.getElementById('soldierMinutesSelect');
+
+        const isLocked = status === 'Locked (Time Expired)';
+
+        if (isLocked) {
+          lockBadge.textContent = 'Locked (Time Expired)';
+          lockBadge.className = 'px-2.5 py-1 text-[11px] font-bold uppercase rounded-full bg-red-500/20 text-red-300 border border-red-500/50';
+          deployBtn.disabled = true;
+          completeBtn.disabled = true;
+          countrySel.disabled = true;
+          yearSel.disabled = true;
+          fortSel.disabled = true;
+          partSel.disabled = true;
+          minSel.disabled = true;
+        } else {
+          lockBadge.textContent = status === 'Active' ? 'Active Window' : 'Scheduled';
+          lockBadge.className =
+            status === 'Active'
+              ? 'px-2.5 py-1 text-[11px] font-bold uppercase rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+              : 'px-2.5 py-1 text-[11px] font-bold uppercase rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40';
+          deployBtn.disabled = false;
+          completeBtn.disabled = false;
+          countrySel.disabled = false;
+          yearSel.disabled = false;
+          fortSel.disabled = false;
+          partSel.disabled = false;
+          minSel.disabled = false;
+        }
+      }
+
+      function renderMissionDropdowns() {
+        const countrySel = document.getElementById('missionCountrySelect');
+        const yearContainer = document.getElementById('missionYearContainer');
+        const yearSel = document.getElementById('missionYearSelect');
+        const fortSel = document.getElementById('missionFortressSelect');
+        const partSel = document.getElementById('missionPartSelect');
+        const minSel = document.getElementById('soldierMinutesSelect');
+        const mehterSel = document.getElementById('mehterPauseSelect');
+
+        countrySel.innerHTML = appState.countries
+          .map((c) => {
+            const statusTag = c.conquered ? `[CONQUERED ${c.conquestCount}x]` : c.conquestCount > 0 ? `[Prior ${c.conquestCount}x]` : '';
+            return `<option value="${c.id}">${c.country} — ${c.subject} ${statusTag}</option>`;
+          })
+          .join('');
+        countrySel.value = appState.selectedCountryId;
+
+        const country = getCountryById(appState.selectedCountryId);
+
+        let availableFortresses = country.fortresses;
+        if (country.type === 'standard') {
+          yearContainer.classList.remove('hidden');
+          yearSel.innerHTML = country.years
+            .map((y) => {
+              const yForts = country.fortresses.filter((f) => f.year === y.yearNumber);
+              const cCount = yForts.filter((f) => f.conquered).length;
+              const tag = y.conquered ? `[CONQUERED ${y.conquestCount}x]` : `(${cCount}/8 Fortresses)`;
+              return `<option value="${y.yearNumber}">Year ${y.yearNumber} ${tag}</option>`;
+            })
+            .join('');
+          yearSel.value = String(appState.selectedYear || 1);
+          availableFortresses = country.fortresses.filter(
+            (f) => f.year === Number(yearSel.value)
+          );
+        } else {
+          yearContainer.classList.add('hidden');
+        }
+
+        fortSel.innerHTML = availableFortresses
+          .map((f) => {
+            const tag = f.conquered
+              ? `[CONQUERED ${f.conquestCount}x]`
+              : `(${f.partsCompleted}/${f.partsRequired} ${country.type === 'special' ? 'Classes' : 'Parts'})`;
+            return `<option value="${f.id}">${f.name} — Cmdr. ${f.commander} ${tag}</option>`;
+          })
+          .join('');
+
+        if (!availableFortresses.some((f) => f.id === appState.selectedFortressId)) {
+          appState.selectedFortressId = availableFortresses[0].id;
+        }
+        fortSel.value = appState.selectedFortressId;
+
+        const selectedFortress =
+          availableFortresses.find((f) => f.id === appState.selectedFortressId) ||
+          availableFortresses[0];
+
+        const unitName = country.type === 'special' ? 'Class' : 'Part';
+        let partsHtml = '';
+        for (let p = 1; p <= selectedFortress.partsRequired; p++) {
+          const done = p <= selectedFortress.partsCompleted;
+          partsHtml += `<option value="${p}">${unitName} ${p} of ${selectedFortress.partsRequired} ${done ? '(Completed)' : '(Target)'}</option>`;
+        }
+        partSel.innerHTML = partsHtml;
+        const nextPart = Math.min(
+          selectedFortress.partsRequired,
+          selectedFortress.partsCompleted + 1
+        );
+        appState.selectedPartTarget = nextPart;
+        partSel.value = String(nextPart);
+
+        minSel.value = String(appState.selectedSoldierMinutes);
+        mehterSel.value = String(appState.selectedMehterMinutes);
+
+        const summaryEl = document.getElementById('activeMissionSummary');
+        if (summaryEl) {
+          summaryEl.textContent = `${country.country} (${country.subject}) • ${selectedFortress.name} • Cmdr. ${selectedFortress.commander} • ${unitName} ${nextPart}/${selectedFortress.partsRequired}`;
+        }
+
+        const readyBanner = document.getElementById('readyForSultanBanner');
+        const readyText = document.getElementById('readyForSultanText');
+        if (isFortressReadyForApproval(selectedFortress)) {
+          readyBanner.classList.remove('hidden');
+          readyText.textContent = `${selectedFortress.name} has completed all ${selectedFortress.partsRequired} ${unitName}s! Request Sultan Approval to mark it Conquered.`;
+        } else {
+          readyBanner.classList.add('hidden');
+        }
+      }
+
+      function renderReinforcementBanner() {
+        const banner = document.getElementById('reinforcementBanner');
+        const textEl = document.getElementById('reinforcementSummaryText');
+        const selectEl = document.getElementById('reinforcementSelect');
+        if (!banner || !textEl || !selectEl) return;
+
+        if (appState.reinforcementQueue.length === 0) {
+          banner.classList.add('hidden');
+          return;
+        }
+
+        banner.classList.remove('hidden');
+        const latest = appState.reinforcementQueue[appState.reinforcementQueue.length - 1];
+        textEl.textContent = `${appState.reinforcementQueue.length} pending reinforcement order(s). Latest: ${latest.incompletePct}% incomplete work from ${latest.fromDivisionName} routed to ${latest.toDivisionName} (${latest.fortressName}, ${latest.countryName}).`;
+
+        selectEl.innerHTML = appState.reinforcementQueue
+          .map(
+            (r) =>
+              `<option value="${r.id}">[${r.toDivisionName}] ${r.incompletePct}% from ${r.fromDivisionName} — ${r.fortressName} (${r.countryName})</option>`
+          )
+          .join('');
+      }
+
+      function renderEmpireAtlas() {
+        const atlasSelect = document.getElementById('atlasCountrySelect');
+        const quickGrid = document.getElementById('countryQuickCardsGrid');
+        const detailPanel = document.getElementById('selectedCountryDetailPanel');
+        if (!atlasSelect || !quickGrid || !detailPanel) return;
+
+        atlasSelect.innerHTML = appState.countries
+          .map((c) => {
+            const badge = c.conquered
+              ? `CONQUERED (${c.conquestCount}x)`
+              : c.conquestCount > 0
+                ? `Re-Conquering (Prior: ${c.conquestCount}x)`
+                : 'In Campaign';
+            return `<option value="${c.id}">${c.country} — ${c.subject} [${badge}]</option>`;
+          })
+          .join('');
+
+        if (!appState.countries.some((c) => c.id === runtime.atlasCountryId)) {
+          runtime.atlasCountryId = appState.countries[0].id;
+        }
+        atlasSelect.value = runtime.atlasCountryId;
+
+        quickGrid.innerHTML = appState.countries
+          .map((c) => {
+            const isSelected = c.id === runtime.atlasCountryId;
+            const conqForts = c.fortresses.filter((f) => f.conquered).length;
+            const totalForts = c.fortresses.length;
+            const border = isSelected
+              ? 'border-2 border-amber-400 bg-obsidian'
+              : c.conquered
+                ? 'border border-emerald-500/50 bg-obsidian/70 hover:border-emerald-400'
+                : 'border border-amber-500/20 bg-obsidian/60 hover:border-amber-500/45';
+
+            return `
+              <button type="button" data-select-atlas-country="${c.id}" class="text-left rounded-xl p-3 transition ${border}">
+                <div class="flex items-center justify-between gap-1.5">
+                  <span class="font-imperial text-xs font-bold text-amber-300 truncate">${c.country}</span>
+                  ${c.conquered
+                ? `<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/50 shrink-0">Conquered (${c.conquestCount}x)</span>`
+                : c.conquestCount > 0
+                  ? `<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 shrink-0">Conquered: ${c.conquestCount}x</span>`
+                  : `<span class="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-red-500/15 text-red-300 border border-red-500/30 shrink-0">${conqForts}/${totalForts} Forts</span>`
+              }
+                </div>
+                <div class="text-[11px] text-gray-300 truncate mt-1">${c.subject}</div>
+              </button>
+            `;
+          })
+          .join('');
+
+        const country = getCountryById(runtime.atlasCountryId);
+        const conqForts = country.fortresses.filter((f) => f.conquered).length;
+        const totalForts = country.fortresses.length;
+        const doneParts = country.fortresses.reduce((s, f) => s + f.partsCompleted, 0);
+        const totalParts = country.fortresses.reduce((s, f) => s + f.partsRequired, 0);
+        const countryReady = isCountryReadyForApproval(country);
+
+        let headerActionsHtml = '';
+        if (countryReady) {
+          headerActionsHtml += `
+            <button type="button" data-approve-country="${country.id}" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian font-extrabold text-xs uppercase tracking-wider shadow-lg">
+              Grant Sultan Decree: Conquer ${country.country}
+            </button>
+          `;
+        }
+        if (country.conquered || conqForts > 0 || doneParts > 0) {
+          headerActionsHtml += `
+            <button type="button" data-liberate-country="${country.id}" class="px-3.5 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/45 font-bold text-xs uppercase tracking-wider">
+              Liberate / Reset Country for Re-Conquest
+            </button>
+          `;
+        }
+
+        let yearsStripHtml = '';
+        if (country.type === 'standard') {
+          yearsStripHtml = `
+            <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5 mt-4">
+              ${country.years
+              .map((y) => {
+                const yForts = country.fortresses.filter((f) => f.year === y.yearNumber);
+                const yConq = yForts.filter((f) => f.conquered).length;
+                const yReady = isYearReadyForApproval(country, y.yearNumber);
+                return `
+                    <div class="rounded-xl p-3 border ${y.conquered
+                    ? 'bg-emerald-950/40 border-emerald-500/50'
+                    : 'bg-obsidian/80 border-amber-500/25'
+                  }">
+                      <div class="flex items-center justify-between">
+                        <span class="font-imperial text-xs font-bold text-amber-300">Year ${y.yearNumber}</span>
+                        ${y.conquered
+                    ? `<span class="text-[10px] font-bold text-emerald-300">Conquered (${y.conquestCount}x)</span>`
+                    : `<span class="text-[10px] font-mono text-gray-400">${yConq}/8 Forts</span>`
+                  }
+                      </div>
+                      ${yReady
+                    ? `<button type="button" data-approve-year="${country.id}:${y.yearNumber}" class="mt-2 w-full py-1.5 px-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-obsidian font-extrabold text-[10px] uppercase">
+                               Approve Year ${y.yearNumber} Conquest
+                             </button>`
+                    : ''
+                  }
+                    </div>
+                  `;
+              })
+              .join('')}
+            </div>
+          `;
+        }
+
+        const filteredFortresses = country.fortresses.filter((f) => {
+          if (runtime.atlasFilter === 'conquered') return f.conquered;
+          if (runtime.atlasFilter === 'ready') return isFortressReadyForApproval(f);
+          if (runtime.atlasFilter === 'unconquered') return !f.conquered;
+          return true;
+        });
+
+        const fortressesHtml = filteredFortresses
+          .map((f) => {
+            const ready = isFortressReadyForApproval(f);
+            const unitLabel = country.type === 'special' ? 'Class' : 'Part';
+            let cardBorder = 'border-red-500/30 bg-charcoal/90';
+            let statusBadge = `<span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-red-500/15 text-red-300 border border-red-500/35">Unconquered</span>`;
+
+            if (f.conquered) {
+              cardBorder = 'border-emerald-500/60 bg-emerald-950/20';
+              statusBadge = `<span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/50">Conquered (${f.conquestCount}x)</span>`;
+            } else if (ready) {
+              cardBorder = 'border-amber-400 bg-amber-950/25';
+              statusBadge = `<span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-amber-500/25 text-amber-200 border border-amber-400 animate-pulse">Awaiting Sultan Seal</span>`;
+            }
+
+            let partsPills = '';
+            for (let p = 1; p <= f.partsRequired; p++) {
+              const done = p <= f.partsCompleted;
+              partsPills += `
+                <button type="button" data-toggle-part="${country.id}|${f.id}|${p}"
+                  class="px-2 py-1 rounded-lg text-[10px] font-mono font-bold border transition ${done
+                  ? 'bg-emerald-500/25 border-emerald-400 text-emerald-200'
+                  : 'bg-obsidian border-gray-700 text-gray-400 hover:border-amber-400 hover:text-amber-200'
+                }">
+                  ${unitLabel} ${p} ${done ? '✓' : ''}
+                </button>
+              `;
+            }
+
+            return `
+              <div class="rounded-2xl border ${cardBorder} p-4 flex flex-col justify-between space-y-3">
+                <div>
+                  <div class="flex items-start justify-between gap-2">
+                    <span class="text-[11px] font-mono text-amber-400 font-bold">
+                      ${country.type === 'standard' ? `Year ${f.year} &bull; Fortress #${f.number}` : `Fortress #${f.number} of 20`}
+                    </span>
+                    ${statusBadge}
+                  </div>
+                  <h4 class="font-imperial text-sm font-bold text-gray-100 mt-1">${f.name}</h4>
+                  <div class="text-xs text-amber-300/90 mt-0.5">Commander: <span class="font-semibold">${f.commander}</span></div>
+                  <div class="mt-1.5 inline-block px-2 py-0.5 rounded bg-obsidian border border-amber-500/25 font-mono text-[10px] text-amber-300">
+                    Permanent Victory Count: Conquered (${f.conquestCount}x)
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-[11px] text-gray-400 mb-1.5">
+                    <span>${unitLabel} Progress:</span>
+                    <span class="font-mono text-gray-200 font-semibold">${f.partsCompleted} / ${f.partsRequired}</span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    ${partsPills}
+                  </div>
+                </div>
+
+                <div class="pt-1 flex flex-wrap gap-2">
+                  <button type="button" data-deploy-fortress="${country.id}|${f.id}" class="flex-1 py-1.5 px-2.5 rounded-lg bg-slatewar hover:bg-slate-800 text-amber-200 border border-amber-500/30 text-[11px] font-bold uppercase">
+                    Target in War Room
+                  </button>
+                  ${ready
+                ? `<button type="button" data-approve-fortress="${country.id}|${f.id}" class="flex-1 py-1.5 px-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-obsidian text-[11px] font-extrabold uppercase">
+                           Sultan Approve
+                         </button>`
+                : ''
+              }
+                  ${f.conquered
+                ? `<button type="button" data-liberate-fortress="${country.id}|${f.id}" class="py-1.5 px-2.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[11px] font-bold uppercase">
+                           Liberate
+                         </button>`
+                : ''
+              }
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+
+        detailPanel.innerHTML = `
+          <div class="bg-charcoal/95 ottoman-border-strong rounded-2xl p-5">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3 class="font-imperial text-2xl font-extrabold gold-gradient-text">${country.country}</h3>
+                  <span class="px-3 py-0.5 text-xs font-bold rounded-full ${country.conquered
+            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400'
+            : 'bg-amber-500/15 text-amber-300 border border-amber-500/40'
+          }">
+                    ${country.conquered ? `CONQUERED (${country.conquestCount}x)` : `Campaign Active • Conquered: ${country.conquestCount} Times`}
+                  </span>
+                </div>
+                <p class="text-sm text-gray-200 font-medium mt-1">${country.subject}</p>
+                <p class="text-xs text-gray-400 mt-0.5">
+                  Fortresses Conquered: <strong class="text-emerald-400">${conqForts}/${totalForts}</strong> &bull;
+                  ${country.type === 'special' ? 'Classes' : 'Parts'} Completed: <strong class="text-amber-300">${doneParts}/${totalParts}</strong>
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                ${headerActionsHtml}
+              </div>
+            </div>
+            ${yearsStripHtml}
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            ${fortressesHtml || '<div class="col-span-full text-center py-8 text-xs text-gray-400 bg-charcoal rounded-2xl border border-amber-500/20">No fortresses match the selected filter.</div>'}
+          </div>
+        `;
+      }
+
+      function renderDailyRoutineTimeline(clockInfo) {
+        const container = document.getElementById('dailyRoutineTimeline');
+        if (!container) return;
+
+        Object.entries(appState.prayerStarts).forEach(([prayer, startVal]) => {
+          const sel = document.querySelector(`.prayer-config-select[data-prayer="${prayer}"]`);
+          if (sel) sel.value = startVal;
+        });
+
+        const {combined} = buildFullDailySchedule();
+        const nowMin = clockInfo.totalMinutes;
+
+        container.innerHTML = combined
+          .map((item) => {
+            const sMin = timeStrToMinutes(item.start);
+            const eMin = timeStrToMinutes(item.end);
+            const isNow = nowMin >= sMin && nowMin < eMin;
+
+            let badgeColor = 'bg-slatewar text-gray-300 border-gray-700';
+            let rowBorder = 'border-amber-500/20 bg-obsidian/75';
+            if (item.category === 'prayer') {
+              badgeColor = 'bg-emerald-500/20 text-emerald-300 border-emerald-400/50';
+              rowBorder = 'border-emerald-500/40 bg-emerald-950/20';
+            } else if (item.category === 'division') {
+              badgeColor = 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+            }
+
+            if (isNow) {
+              rowBorder = 'border-2 border-amber-400 bg-amber-500/10 shadow-lg';
+            }
+
+            return `
+              <div class="rounded-xl border ${rowBorder} p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div class="flex items-start sm:items-center gap-3">
+                  <span class="font-mono text-xs font-bold text-amber-300 bg-charcoal px-2.5 py-1 rounded-lg border border-amber-500/30 shrink-0">
+                    ${format12Hour(item.start)} – ${format12Hour(item.end)}
+                  </span>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs sm:text-sm font-bold text-gray-100">${item.title}</span>
+                      ${isNow ? '<span class="px-2 py-0.5 text-[10px] font-extrabold uppercase rounded-full bg-amber-400 text-obsidian animate-pulse">Active Now</span>' : ''}
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-0.5">${item.note}</p>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full border ${badgeColor} self-start sm:self-center shrink-0">
+                  ${item.category === 'prayer' ? '20-Min Prayer' : item.category}
+                </span>
+              </div>
+            `;
+          })
+          .join('');
+      }
+
+      function renderConquestChronicles() {
+        const tbody = document.getElementById('chroniclesSummaryTableBody');
+        const listEl = document.getElementById('chronicleEventsList');
+        const countBadge = document.getElementById('chronicleCountBadge');
+        if (!tbody || !listEl) return;
+
+        tbody.innerHTML = appState.countries
+          .map((c) => {
+            const conqForts = c.fortresses.filter((f) => f.conquered).length;
+            const totalForts = c.fortresses.length;
+            const doneParts = c.fortresses.reduce((s, f) => s + f.partsCompleted, 0);
+            const totalParts = c.fortresses.reduce((s, f) => s + f.partsRequired, 0);
+
+            return `
+              <tr class="hover:bg-obsidian/60">
+                <td class="py-2.5 px-3 font-imperial font-bold text-amber-300">${c.country}</td>
+                <td class="py-2.5 px-3 text-gray-200">${c.subject}</td>
+                <td class="py-2.5 px-3">
+                  ${c.conquered
+                ? '<span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/50">Conquered</span>'
+                : '<span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-red-500/15 text-red-300 border border-red-500/30">In Campaign</span>'
+              }
+                </td>
+                <td class="py-2.5 px-3 font-mono font-bold text-emerald-400">Conquered (${c.conquestCount}x)</td>
+                <td class="py-2.5 px-3 font-mono text-gray-300">${conqForts} / ${totalForts}</td>
+                <td class="py-2.5 px-3 font-mono text-gray-300">${doneParts} / ${totalParts}</td>
+              </tr>
+            `;
+          })
+          .join('');
+
+        countBadge.textContent = `${appState.chronicles.length} Entries`;
+        listEl.innerHTML = appState.chronicles
+          .map((entry) => {
+            let badgeStyle = 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+            if (entry.type === 'CONQUEST' || entry.type === 'IMPERIAL_CONQUEST') {
+              badgeStyle = 'bg-emerald-500/20 text-emerald-300 border-emerald-400/50';
+            } else if (entry.type === 'REINFORCEMENT') {
+              badgeStyle = 'bg-red-500/20 text-red-300 border-red-500/40';
+            }
+
+            return `
+              <div class="rounded-xl bg-obsidian/80 border border-amber-500/20 p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded border ${badgeStyle}">${entry.type}</span>
+                    <span class="text-xs font-bold text-gray-100">${entry.title}</span>
+                  </div>
+                  <p class="text-[11px] text-gray-400 mt-1">${entry.detail}</p>
+                </div>
+                <span class="font-mono text-[10px] text-gray-500 shrink-0">${entry.timestamp}</span>
+              </div>
+            `;
+          })
+          .join('');
+      }
+
+      function renderAll() {
+        const clockInfo = getCurrentClockInfo();
+        renderKPIs(clockInfo);
+        renderDivisionsAndWindowLocks(clockInfo);
+        renderMissionDropdowns();
+        renderReinforcementBanner();
+        renderSoldierGrid();
+        renderEmpireAtlas();
+        renderDailyRoutineTimeline(clockInfo);
+        renderConquestChronicles();
+      }
+
+      /* =====================================================================
+         13. EVENT LISTENERS & USER INTERACTIONS
+         ===================================================================== */
+      function bindEventListeners() {
+        // Navigation Tabs
+        document.querySelectorAll('.nav-tab-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const tab = btn.getAttribute('data-tab');
+            runtime.activeTab = tab;
+            document.querySelectorAll('.nav-tab-btn').forEach((b) => {
+              b.className =
+                'nav-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition text-gray-300 hover:bg-slatewar';
+            });
+            btn.className =
+              'nav-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition bg-amber-500 text-obsidian shadow';
+
+            document.querySelectorAll('.tab-panel').forEach((panel) => {
+              panel.classList.add('hidden');
+            });
+            document.getElementById(`tab-${tab}`)?.classList.remove('hidden');
+          });
+        });
+
+        // Clock Override Selector
+        document.getElementById('clockOverrideSelect').addEventListener('change', (e) => {
+          runtime.clockOverride = e.target.value;
+          updateClockAndLiveStatuses();
+        });
+
+        // Alarm Controls
+        document.getElementById('toggleSoundBtn').addEventListener('click', (e) => {
+          alarmEngine.soundEnabled = !alarmEngine.soundEnabled;
+          alarmEngine.ensureContext();
+          e.target.textContent = alarmEngine.soundEnabled ? 'Sound: ON' : 'Sound: OFF';
+          e.target.className = alarmEngine.soundEnabled
+            ? 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 transition'
+            : 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-red-500/20 text-red-300 border border-red-500/40 hover:bg-red-500/30 transition';
+          if (!alarmEngine.soundEnabled) alarmEngine.stopAlarm();
+        });
+
+        document.getElementById('testAlarmBtn').addEventListener('click', () => {
+          alarmEngine.triggerAlarm(
+            'Imperial War Horn Test',
+            'Audio chime & visual sentinel verified. Victory Through Knowledge!',
+            false
+          );
+        });
+
+        document.getElementById('stopAlarmBtn').addEventListener('click', () => {
+          alarmEngine.stopAlarm();
+        });
+
+        document.getElementById('dismissBannerAlarmBtn').addEventListener('click', () => {
+          alarmEngine.stopAlarm();
+        });
+
+        // Mission Dropdown Changes
+        document.getElementById('missionDivisionSelect').addEventListener('change', () => {
+          updateMissionInputLocks(getCurrentClockInfo());
+        });
+
+        document.getElementById('missionCountrySelect').addEventListener('change', (e) => {
+          appState.selectedCountryId = e.target.value;
+          const c = getCountryById(appState.selectedCountryId);
+          appState.selectedYear = 1;
+          appState.selectedFortressId = c.fortresses[0].id;
+          saveAndRefresh();
+        });
+
+        document.getElementById('missionYearSelect').addEventListener('change', (e) => {
+          appState.selectedYear = Number(e.target.value);
+          const c = getCountryById(appState.selectedCountryId);
+          const firstInYear = c.fortresses.find((f) => f.year === appState.selectedYear);
+          if (firstInYear) appState.selectedFortressId = firstInYear.id;
+          saveAndRefresh();
+        });
+
+        document.getElementById('missionFortressSelect').addEventListener('change', (e) => {
+          appState.selectedFortressId = e.target.value;
+          saveAndRefresh();
+        });
+
+        document.getElementById('missionPartSelect').addEventListener('change', (e) => {
+          appState.selectedPartTarget = Number(e.target.value);
+          storageManager.save(appState);
+        });
+
+        document.getElementById('soldierMinutesSelect').addEventListener('change', (e) => {
+          pauseTimer();
+          appState.selectedSoldierMinutes = Number(e.target.value);
+          runtime.timerMode = 'battalion';
+          runtime.totalSeconds = appState.selectedSoldierMinutes * 60;
+          runtime.remainingSeconds = appState.selectedSoldierMinutes * 60;
+          saveAndRefresh();
+        });
+
+        document.getElementById('mehterPauseSelect').addEventListener('change', (e) => {
+          appState.selectedMehterMinutes = Number(e.target.value);
+          storageManager.save(appState);
+        });
+
+        // Battalion Timer Controls
+        document.getElementById('startDeploymentBtn').addEventListener('click', () => {
+          startTimer('battalion');
+        });
+
+        document.getElementById('pauseDeploymentBtn').addEventListener('click', () => {
+          pauseTimer();
+          showToast('Battalion march paused.', 'amber');
+        });
+
+        document.getElementById('completeMissionNowBtn').addEventListener('click', () => {
+          completeCurrentObjective(appState.selectedSoldierMinutes);
+        });
+
+        document.getElementById('startMehterBtn').addEventListener('click', () => {
+          pauseTimer();
+          runtime.timerMode = 'mehter';
+          runtime.totalSeconds = appState.selectedMehterMinutes * 60;
+          runtime.remainingSeconds = appState.selectedMehterMinutes * 60;
+          startTimer('mehter');
+        });
+
+        // Request Sultan Approval from War Room Banner
+        document.getElementById('openSultanApprovalFromWarRoomBtn').addEventListener('click', () => {
+          const country = getCountryById(appState.selectedCountryId);
+          const fortress = country.fortresses.find((f) => f.id === appState.selectedFortressId);
+          if (fortress && isFortressReadyForApproval(fortress)) {
+            openSultanApprovalModal({
+              scope: 'fortress',
+              countryId: country.id,
+              fortressId: fortress.id,
+            });
+          }
+        });
+
+        // Post-Expiry Work Report Submit
+        document.getElementById('submitExpiryReportBtn').addEventListener('click', () => {
+          submitPostExpiryReport();
+        });
+
+        // Load Auto-Reinforcement into Mission Planner
+        document.getElementById('loadReinforcementBtn').addEventListener('click', () => {
+          const reinfId = document.getElementById('reinforcementSelect').value;
+          const idx = appState.reinforcementQueue.findIndex((r) => r.id === reinfId);
+          if (idx === -1) return;
+          const order = appState.reinforcementQueue[idx];
+          appState.reinforcementQueue.splice(idx, 1);
+
+          appState.selectedCountryId = order.countryId;
+          const c = getCountryById(order.countryId);
+          const f = c.fortresses.find((item) => item.id === order.fortressId) || c.fortresses[0];
+          if (f.year) appState.selectedYear = f.year;
+          appState.selectedFortressId = f.id;
+          document.getElementById('missionDivisionSelect').value = order.toDivisionId;
+
+          addChronicleEntry(
+            'REINFORCEMENT_LOADED',
+            `Reinforcement Engaged by ${order.toDivisionName}`,
+            `Loaded ${order.incompletePct}% carryover mission for ${order.fortressName} (${order.countryName}).`
+          );
+
+          saveAndRefresh();
+          showToast(`Reinforcement mission loaded for ${order.toDivisionName}!`, 'emerald');
+        });
+
+        // Atlas Country & Filter Controls
+        document.getElementById('atlasCountrySelect').addEventListener('change', (e) => {
+          runtime.atlasCountryId = e.target.value;
+          renderEmpireAtlas();
+        });
+
+        document.getElementById('atlasStatusFilter').addEventListener('change', (e) => {
+          runtime.atlasFilter = e.target.value;
+          renderEmpireAtlas();
+        });
+
+        // Add New Country Preset
+        document.getElementById('addCountryBtn').addEventListener('click', () => {
+          const raw = document.getElementById('newCountryPresetSelect').value;
+          const [id, subject, countryName, type] = raw.split('|');
+          if (appState.countries.some((c) => c.id === id)) {
+            runtime.atlasCountryId = id;
+            renderEmpireAtlas();
+            showToast(`${countryName} (${subject}) is already part of your Empire!`, 'amber');
+            return;
+          }
+          const newCountry = buildCountryEntity(
+            {id, subject, country: countryName, type},
+            appState.countries.length
+          );
+          appState.countries.push(newCountry);
+          runtime.atlasCountryId = id;
+          addChronicleEntry(
+            'EXPANSION',
+            `New Territory Annexed: ${countryName}`,
+            `Added ${subject} (${type === 'special' ? '20 Fortresses / 100 Classes' : '5 Years / 40 Fortresses / 120 Parts'}).`
+          );
+          saveAndRefresh();
+          showToast(`${countryName} (${subject}) annexed into the Empire!`, 'emerald');
+        });
+
+        // Delegated Click Events inside Empire Atlas
+        document.getElementById('tab-empire-atlas').addEventListener('click', (e) => {
+          const quickCountryBtn = e.target.closest('[data-select-atlas-country]');
+          if (quickCountryBtn) {
+            runtime.atlasCountryId = quickCountryBtn.getAttribute('data-select-atlas-country');
+            renderEmpireAtlas();
+            return;
+          }
+
+          const togglePartBtn = e.target.closest('[data-toggle-part]');
+          if (togglePartBtn) {
+            const [cId, fId, partStr] = togglePartBtn.getAttribute('data-toggle-part').split('|');
+            const partNum = Number(partStr);
+            const c = getCountryById(cId);
+            const f = c.fortresses.find((item) => item.id === fId);
+            if (!f) return;
+            if (f.conquered) {
+              showToast('Fortress is already Conquered. Liberate it first to re-conquer from 0.', 'amber');
+              return;
+            }
+            f.partsCompleted = f.partsCompleted === partNum ? partNum - 1 : partNum;
+            saveAndRefresh();
+            if (isFortressReadyForApproval(f)) {
+              openSultanApprovalModal({scope: 'fortress', countryId: c.id, fortressId: f.id});
+            }
+            return;
+          }
+
+          const deployFortBtn = e.target.closest('[data-deploy-fortress]');
+          if (deployFortBtn) {
+            const [cId, fId] = deployFortBtn.getAttribute('data-deploy-fortress').split('|');
+            const c = getCountryById(cId);
+            const f = c.fortresses.find((item) => item.id === fId);
+            appState.selectedCountryId = c.id;
+            if (f && f.year) appState.selectedYear = f.year;
+            if (f) appState.selectedFortressId = f.id;
+            saveAndRefresh();
+            document.querySelector('[data-tab="war-room"]').click();
+            showToast(`Targeted ${f.shortName} in War Room!`, 'emerald');
+            return;
+          }
+
+          const approveFortBtn = e.target.closest('[data-approve-fortress]');
+          if (approveFortBtn) {
+            const [cId, fId] = approveFortBtn.getAttribute('data-approve-fortress').split('|');
+            openSultanApprovalModal({scope: 'fortress', countryId: cId, fortressId: fId});
+            return;
+          }
+
+          const approveYearBtn = e.target.closest('[data-approve-year]');
+          if (approveYearBtn) {
+            const [cId, yrStr] = approveYearBtn.getAttribute('data-approve-year').split(':');
+            openSultanApprovalModal({scope: 'year', countryId: cId, yearNumber: Number(yrStr)});
+            return;
+          }
+
+          const approveCountryBtn = e.target.closest('[data-approve-country]');
+          if (approveCountryBtn) {
+            const cId = approveCountryBtn.getAttribute('data-approve-country');
+            openSultanApprovalModal({scope: 'country', countryId: cId});
+            return;
+          }
+
+          const libFortBtn = e.target.closest('[data-liberate-fortress]');
+          if (libFortBtn) {
+            const [cId, fId] = libFortBtn.getAttribute('data-liberate-fortress').split('|');
+            openLiberateModal('fortress', cId, fId);
+            return;
+          }
+
+          const libCountryBtn = e.target.closest('[data-liberate-country]');
+          if (libCountryBtn) {
+            const cId = libCountryBtn.getAttribute('data-liberate-country');
+            openLiberateModal('country', cId);
+            return;
+          }
+        });
+
+        // Sultan Approval & Royal Celebration Modals
+        document.getElementById('confirmSultanApprovalBtn').addEventListener('click', executeSultanApproval);
+        document.getElementById('cancelSultanApprovalBtn').addEventListener('click', () => {
+          document.getElementById('sultanApprovalModal').classList.add('hidden');
+          runtime.pendingSultanApproval = null;
+        });
+        document.getElementById('closeCelebrationBtn').addEventListener('click', () => {
+          document.getElementById('royalCelebrationModal').classList.add('hidden');
+        });
+
+        // Liberation Confirmation Modal
+        document.getElementById('confirmLiberateBtn').addEventListener('click', executeLiberation);
+        document.getElementById('cancelLiberateBtn').addEventListener('click', () => {
+          document.getElementById('liberateConfirmModal').classList.add('hidden');
+          runtime.pendingLiberation = null;
+        });
+
+        // Daily Routine Prayer Configuration Dropdowns
+        document.querySelectorAll('.prayer-config-select').forEach((sel) => {
+          sel.addEventListener('change', (e) => {
+            const prayer = e.target.getAttribute('data-prayer');
+            appState.prayerStarts[prayer] = e.target.value;
+            saveAndRefresh();
+            showToast(`${prayer} mandatory 20-minute prayer updated to ${format12Hour(e.target.value)}.`, 'emerald');
+          });
+        });
+
+        document.getElementById('resetRoutineDefaultsBtn').addEventListener('click', () => {
+          if (!window.confirm('Are you sure you want to restore default prayer windows?')) {
+            return;
+          }
+          appState.prayerStarts = {
+            Fajr: '05:10',
+            Dhuhr: '12:15',
+            Asr: '16:15',
+            Maghrib: '17:45',
+            Isha: '20:30',
+          };
+          saveAndRefresh();
+          showToast('Daily routine & 20-minute prayer windows restored to default.', 'emerald');
+        });
+
+        // Cross-Device Cloud Sync Modal & One-Click JSON Backup / Restore
+        const syncModal = document.getElementById('syncDevicesModal');
+        const syncTextarea = document.getElementById('syncCodeTextarea');
+        const syncFeedback = document.getElementById('syncFeedbackMessage');
+
+        function displaySyncFeedback(msg) {
+          syncFeedback.textContent = msg;
+          syncFeedback.classList.remove('hidden');
+        }
+
+        function copyTextFallback(text) {
+          syncTextarea.value = text;
+          syncTextarea.select();
+          syncTextarea.setSelectionRange(0, 999999);
+          try {
+            document.execCommand('copy');
+            return true;
+          } catch (_) {
+            return false;
+          }
+        }
+
+        document.getElementById('openSyncModalBtn').addEventListener('click', () => {
+          syncFeedback.classList.add('hidden');
+          const modalLastUpd = document.getElementById('modalLastUpdatedText');
+          if (modalLastUpd) {
+            modalLastUpd.textContent = appState.lastUpdated
+              ? new Date(appState.lastUpdated).toLocaleString()
+              : 'Not yet synced';
+          }
+          syncModal.classList.remove('hidden');
+        });
+
+        document.getElementById('closeSyncModalBtn').addEventListener('click', () => {
+          syncModal.classList.add('hidden');
+        });
+
+        document.getElementById('forcePushCloudBtn').addEventListener('click', () => {
+          if (!storageManager.cloudConfigured) {
+            displaySyncFeedback('Firebase config not yet added in index.html. Follow the setup guide to enable Cloud Sync.');
+            return;
+          }
+          appState.lastUpdated = Date.now();
+          storageManager.save(appState, false);
+          displaySyncFeedback('Local Empire State pushed to Firebase Realtime Database!');
+          showToast('Cloud state updated!', 'emerald');
+        });
+
+        document.getElementById('copySyncCodeBtn').addEventListener('click', () => {
+          const code = storageManager.encodeSyncString(appState);
+          copyTextFallback(code);
+          displaySyncFeedback('Manual Sync Code generated and copied to clipboard!');
+        });
+
+        document.getElementById('generateSyncLinkBtn').addEventListener('click', () => {
+          const code = storageManager.encodeSyncString(appState);
+          const baseUrl = window.location.href.split('#')[0];
+          const fullUrl = `${baseUrl}#sync=${encodeURIComponent(code)}`;
+          copyTextFallback(fullUrl);
+          displaySyncFeedback('Shareable Sync Link copied! Opening this URL on any device restores your Conquered state.');
+        });
+
+        document.getElementById('downloadBackupJsonBtn').addEventListener('click', () => {
+          const blob = new Blob([JSON.stringify(appState, null, 2)], {type: 'application/json'});
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `janissary-hq-empire-backup-${new Date().toISOString().slice(0, 10)}.json`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+          displaySyncFeedback('Empire JSON Backup exported successfully.');
+        });
+
+        document.getElementById('pasteLoadSyncCodeBtn').addEventListener('click', () => {
+          const restored = storageManager.decodeSyncString(syncTextarea.value);
+          if (!restored) {
+            showToast('Invalid Sync Code or URL. Please verify and try again.', 'red');
+            return;
+          }
+          if (!window.confirm('Replace current device state with the pasted Sync Code data?')) {
+            return;
+          }
+          appState = restored;
+          runtime.atlasCountryId = appState.selectedCountryId || appState.countries[0].id;
+          saveAndRefresh();
+          displaySyncFeedback('Empire State loaded & synced to Cloud!');
+          showToast('Empire State synced across device!', 'emerald');
+        });
+
+        document.getElementById('uploadBackupJsonInput').addEventListener('change', (e) => {
+          const file = e.target.files?.[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (evt) => {
+            const restored = storageManager.decodeSyncString(evt.target.result);
+            if (!restored) {
+              showToast('Could not parse JSON backup file.', 'red');
+              return;
+            }
+            if (!window.confirm('Restore this JSON backup? This will update both local and cloud records.')) {
+              return;
+            }
+            appState = restored;
+            runtime.atlasCountryId = appState.selectedCountryId || appState.countries[0].id;
+            saveAndRefresh();
+            displaySyncFeedback('Backup JSON restored & pushed to Cloud!');
+            showToast('Backup JSON restored successfully!', 'emerald');
+          };
+          reader.readAsText(file);
+          e.target.value = '';
+        });
+      }
+
+      /* =====================================================================
+         14. BOOTSTRAP APPLICATION & START REAL-TIME CLOUD SYNC ON LOAD
+         ===================================================================== */
+      window.addEventListener('DOMContentLoaded', () => {
+        bindEventListeners();
+        renderAll();
+        updateClockAndLiveStatuses();
+        setInterval(updateClockAndLiveStatuses, 1000);
+
+        storageManager.initCloudSync(
+          (remoteState) => {
+            appState = remoteState;
+            runtime.atlasCountryId = appState.selectedCountryId || appState.countries[0].id;
+            renderAll();
+            const modalLastUpd = document.getElementById('modalLastUpdatedText');
+            if (modalLastUpd && appState.lastUpdated) {
+              modalLastUpd.textContent = new Date(appState.lastUpdated).toLocaleString();
+            }
+            showToast('Synced latest Conquered progress from Cloud!', 'emerald');
+          },
+          (statusLabel, isSynced, isConfigured) => {
+            updateCloudStatusUI(statusLabel, isSynced, isConfigured);
+          }
+        );
+      });
+    })();
+  </script>
+</body>
+
+</html>
